@@ -46,4 +46,13 @@ export default createGlobalStyle`
   button:hover {
     filter: brightness(0.8);
   }
+
+  dialog {
+    background: rgba(8, 8, 8, 0.64);
+    color: ${({ theme }) => theme.COLORS.PURPLE};
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    inset: 0;
+  }
 `;

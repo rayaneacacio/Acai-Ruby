@@ -1,12 +1,12 @@
 import { ReactElement } from "react";
 
-import svgArrowToRight from "../../assets/arrowToRight.svg";
+import SvgArrowToRight from "../../assets/arrowToRight.svg";
 import { Container } from "./style";
 
 export function ButtonBack(): ReactElement {
   return (
     <Container>
-      <img src={ svgArrowToRight } alt="" />
+      <img src={ SvgArrowToRight } alt="" />
       <p>VOLTAR</p>
     </Container>
   )
