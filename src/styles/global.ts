@@ -10,7 +10,11 @@ export default createGlobalStyle`
 
   :root {
     font-size: 62.5%;
-    
+  }
+
+  #root {
+    width: 100vw;
+    height: 100vh;
   }
 
   body {
@@ -23,6 +27,7 @@ export default createGlobalStyle`
 
   h1, h2 {
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
+    font-size: 2.8rem;
   }
 
   h2 {
@@ -33,6 +38,8 @@ export default createGlobalStyle`
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     background: none;
     color: ${({ theme }) => theme.COLORS.WHITE};
+    font-size: 2rem;
+    font-weight: 300;
     cursor: pointer;
   }
 

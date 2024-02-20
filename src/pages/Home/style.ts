@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
+  height: 100%;
   text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   display: flex;
@@ -16,6 +16,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     gap: 6rem;
+    position: relative;
   }
 
   h1 {
@@ -44,12 +45,26 @@ export const Container = styled.div`
     padding: 0 2.5rem;
   }
 
+  main img {
+    width: 40rem;
+    position: absolute;
+    bottom: 0;
+  }
+
+  main img:first-of-type {
+    left: -30rem;
+  }
+
+  main img:last-of-type {
+    right: -30rem;
+  }
+
   button {
     background: radial-gradient(circle, rgba(0,0,0,0.6638304980195203) 0%, rgba(0,0,0,0.25486691258534666) 100%);
     font-size: 3rem;
     font-weight: 700;
     width: 100%;
     font-size: 5rem;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
   }
 `;
