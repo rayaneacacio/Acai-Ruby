@@ -8,11 +8,9 @@ import pngMilkshake from "../../assets/milkshake_option_menu.png";
 import pngBebidas from "../../assets/bebidas_option_menu.png";
 import pngAcaiPremium from "../../assets/acai_premium.png";
 import pngAcaiTradicional from "../../assets/acai_tradicional.png";
-import svgCup from "../../assets/cup.svg";
 
 import { ButtonBack } from "../../components/ButtonBack";
-import { ButtonNext } from "../../components/ButtonNext";
-import { Cup } from "../../components/Cup";
+import { Modal } from "../../components/Modal";
 
 import { Container } from "./style";
 
@@ -45,47 +43,20 @@ export function Menu(): ReactElement {
       </div>
 
       <main>
-        <button>
+        <button className="buttonMain">
           <img src={ pngAcaiPremium } alt="" />
           <p>AÇAÍ PREMIUM</p>
         </button>
 
-        <button>
+        <button className="buttonMain">
           <img src={ pngAcaiTradicional } alt="" />
           <p>AÇAÍ TRADICIONAL</p>
         </button>
+
+        <ButtonBack />
       </main>
 
-      <ButtonBack />
-
-      <dialog>
-        <div>
-          <div>
-            <img src={ svgCup } alt="" />
-            <p>Tamanho</p>
-          </div>
-
-          <div className="divCups">
-            <button> <Cup img={ pngAcaiPremium } quantity="200" si="ML" price="6,00" /> </button>
-            <button> <Cup img={ pngAcaiPremium } quantity="300" si="ML" price="8,00" /> </button>
-            <button> <Cup img={ pngAcaiPremium } quantity="400" si="ML" price="10,00" /> </button>
-            <button> <Cup img={ pngAcaiPremium } quantity="500" si="ML" price="12,00" /> </button>
-            <button> <Cup img={ pngAcaiPremium } quantity="1L" price="20,00" /> </button>
-          </div>
-
-          <div>
-            <div className="divPedido">
-              <p>SELECIONADO</p>
-              <Cup img={ pngAcaiPremium } quantity="500" si="ML" price="12,00" />
-            </div>
-
-            <div className="divButtonsBackAndNext">
-              <ButtonBack />
-              <ButtonNext />
-            </div>
-          </div>
-        </div>
-      </dialog>
+      <Modal />
     </Container>
   )
 }

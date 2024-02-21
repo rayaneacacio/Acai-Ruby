@@ -22,7 +22,7 @@ export default createGlobalStyle`
     color: ${({ theme }) => theme.COLORS.WHITE};
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     font-size: 1.8rem;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   h1, h2 {
@@ -41,6 +41,7 @@ export default createGlobalStyle`
     font-size: 2rem;
     font-weight: 300;
     cursor: pointer;
+    transition: 0.5s
   }
 
   button:hover {
@@ -54,5 +55,6 @@ export default createGlobalStyle`
     height: 100%;
     position: fixed;
     inset: 0;
+    z-index: 1;
   }
 `;

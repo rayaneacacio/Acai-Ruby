@@ -21,6 +21,7 @@ export const Container = styled.div`
     grid-area: header;
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+    z-index: 1;
 
     img {
       width: 46rem;
@@ -46,8 +47,9 @@ export const Container = styled.div`
   }
 
   .options {
-    width: 10rem;
-    margin: 0 3.2rem;
+    background: ${({ theme }) => theme.COLORS.WHITE};
+    width: 16rem;
+    padding: 0 3.2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,26 +92,29 @@ export const Container = styled.div`
   }
 
   main {
+    background: ${({ theme }) => theme.COLORS.WHITE};
     padding-left: 28rem;
     display: flex;
     align-items: center;
     gap: 15rem;
     grid-area: main;
+    position: relative;
 
-    img {
+    .buttonMain > img {
       width: 15rem;
       padding: 1.3rem;
     }
 
-    button:first-of-type > img {
+    .buttonMain:first-of-type > img {
       width: 12.7rem;
       padding: 1rem;
     }
 
-    button {
+    .buttonMain {
       width: 25rem;
       box-shadow: 0px 2px 16px 1px rgba(0, 0, 0, 0.15);
       border-radius: 2rem;
+      transition: 0.1s;
 
       p {
         background-color: ${({ theme }) => theme.COLORS.PURPLE};
@@ -126,51 +131,15 @@ export const Container = styled.div`
     }
   }
 
-  > button {
+  .buttonBack {
     background-color: ${({ theme }) => theme.COLORS.PURPLE};
     color: ${({ theme }) => theme.COLORS.WHITE};
 
     svg {
       color: ${({ theme }) => theme.COLORS.WHITE};
-    }
-  }
-  dialog {
-    display: block;
-  }
 
-  dialog > div {
-    background-color: ${({ theme }) => theme.COLORS.WHITE};
-    font-size: 2rem;
-    font-weight: 600;
-    width: 100%;
-    height: 25rem;
-    position: fixed;
-    bottom: 0;
-    padding: 2rem 5rem;
-    border-radius: 4rem 4rem 0 0;
-    display: grid;
-    grid-template-areas: "div1 div3" "divCups div3";
-    
-    > div:first-of-type {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      grid-area: div1;
-    }
-
-    .divCups {
-      grid-area: divCups;
-      display: flex;
-      gap: 9rem;
-    }
-
-    > div:last-of-type {
-      grid-area: div3;
-
-      .divPedido {
-        > div {
-          border: 2px solid ${({ theme }) => theme.COLORS.PURPLE};
-        }
+      path {
+        fill: white;
       }
     }
   }
