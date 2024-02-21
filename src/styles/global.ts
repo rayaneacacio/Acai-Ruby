@@ -23,6 +23,16 @@ export default createGlobalStyle`
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     font-size: 1.8rem;
     overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      background: transparent;
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: ${({ theme }) => theme.COLORS.PURPLE_22};
+      border-radius: 2px;
+    }
   }
 
   h1, h2 {
@@ -41,11 +51,12 @@ export default createGlobalStyle`
     font-size: 2rem;
     font-weight: 300;
     cursor: pointer;
-    transition: 0.5s
+    transition: 0.3s;
+    outline: ${({ theme }) => theme.COLORS.WHITE};
   }
 
   button:hover {
-    filter: brightness(0.8);
+    filter: brightness(0.7);
   }
 
   dialog {
