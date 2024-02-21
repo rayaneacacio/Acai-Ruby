@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.dialog`
-  /* display: block; */
   > div {
     background-color: ${({ theme }) => theme.COLORS.WHITE};
     font-size: 2rem;
@@ -14,6 +13,9 @@ export const Container = styled.dialog`
     border-radius: 4rem 4rem 0 0;
     display: grid;
     grid-template-areas: "div1 div3" "divCups div3";
+    justify-content: space-evenly;
+
+    animation: animateToTop 0.3s forwards ease;
     
     > div:first-of-type {
       display: flex;

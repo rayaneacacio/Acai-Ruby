@@ -7,6 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 5rem;
+  animation: animateToRight 0.5s forwards;
 
   button {
     font-family: ${({ theme }) => theme.FONTS.ROBOTO};

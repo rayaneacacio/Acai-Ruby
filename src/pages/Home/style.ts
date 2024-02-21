@@ -17,6 +17,7 @@ export const Container = styled.div`
     justify-content: center;
     gap: 6rem;
     position: relative;
+    animation: animateOpacity 1s forwards ease;
   }
 
   h1 {

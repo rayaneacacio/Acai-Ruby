@@ -68,4 +68,31 @@ export default createGlobalStyle`
     inset: 0;
     z-index: 1;
   }
+
+  @keyframes animateToTop {
+    from {
+      height: 5rem;
+    }
+    to {
+      height: 25rem;
+    }
+  }
+
+  @keyframes animateToRight {
+    from {
+      transform: translateX(-5rem);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes animateOpacity {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;

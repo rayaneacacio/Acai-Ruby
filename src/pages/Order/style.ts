@@ -7,6 +7,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 5rem;
+  animation: animateOpacity 1s forwards ease;
 
   > :first-child {
     width: 100%;

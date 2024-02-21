@@ -18,4 +18,8 @@ export const Container = styled.button`
   svg {
     width: 15rem;
   }
+
+  p {
+    animation: animateToRight 0.5s forwards;
+  }
 `;

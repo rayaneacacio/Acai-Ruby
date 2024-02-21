@@ -12,6 +12,7 @@ export const Container = styled.div`
   ;
   grid-template-columns: 14rem 1fr;
   grid-template-rows: 24rem 1fr;
+  animation: animateOpacity 1s forwards ease;
 
   header {
     background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
@@ -80,7 +81,7 @@ export const Container = styled.div`
         width: 5rem;
       }
 
-      &:hover {
+      &:hover, &:focus, &:focus-visible {
         background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
         color: ${({ theme }) => theme.COLORS.WHITE};
       }
@@ -115,6 +116,7 @@ export const Container = styled.div`
       box-shadow: 0px 2px 16px 1px rgba(0, 0, 0, 0.15);
       border-radius: 2rem;
       transition: 0.1s;
+      animation: animateToRight 0.5s forwards;
 
       p {
         background-color: ${({ theme }) => theme.COLORS.PURPLE};
@@ -125,7 +127,7 @@ export const Container = styled.div`
         border-radius: 0 0 1.5rem 1.5rem;
       }
 
-      &:hover {
+      &:hover, &:focus, &:focus-visible {
         border: 2px solid ${({ theme }) => theme.COLORS.PURPLE};
       }
     }
