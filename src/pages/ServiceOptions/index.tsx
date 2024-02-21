@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
-import svgFood from "../../assets/food.svg";
-import svgBox from "../../assets/box.svg";
+import { SvgFood } from "../../assets/svgs/food";
+import { SvgBox } from "../../assets/svgs/box";
 
 import { Button } from "../../components/Button";
 import { ButtonBack } from "../../components/ButtonBack";
@@ -14,8 +14,8 @@ export function ServiceOptions(): ReactElement {
       <h1>ESCOLHA UMA DAS OPÇÕES ABAIXO ;)</h1>
 
       <div>
-        <Button icon={ svgFood } text="PARA COMER AQUI" />
-        <Button icon={ svgBox } text="PARA LEVAR" />
+        <Button icon={ SvgFood() } text="PARA COMER AQUI" />
+        <Button icon={ SvgBox() } text="PARA LEVAR" />
       </div>
 
       <ButtonBack />

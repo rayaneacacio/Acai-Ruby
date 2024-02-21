@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
-import svgCard from "../../assets/card.svg";
-import svgMoney from "../../assets/money.svg";
+import { SvgCard } from "../../assets/svgs/card";
+import { SvgMoney } from "../../assets/svgs/money";
 
 import { Button } from "../../components/Button";
 import { ButtonBack } from "../../components/ButtonBack";
@@ -14,8 +14,8 @@ export function PaymentOptions(): ReactElement {
       <h1>ESCOLHA UMA DAS OPÇÕES ABAIXO ;)</h1>
 
       <div>
-        <Button icon={ svgCard } text="CARTÃO" />
-        <Button icon={ svgMoney } text="DINHEIRO" />
+        <Button icon={ SvgCard() } text="CARTÃO" />
+        <Button icon={ SvgMoney() } text="DINHEIRO" />
       </div>
 
       <ButtonBack />
