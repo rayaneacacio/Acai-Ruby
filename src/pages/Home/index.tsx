@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { useNavigate } from "react-router-dom";
 
 import pngAcai1 from "../../assets/acai1.png";
 import pngAcai2 from "../../assets/acai2.png";
@@ -6,6 +7,12 @@ import pngAcai2 from "../../assets/acai2.png";
 import { Container } from "./style";
 
 export function Home(): ReactElement {
+  const navigate = useNavigate();
+
+  function handleNavigateServiceOptions() {
+    navigate("/services");
+  }
+
   return (
     <Container>
       <main>
@@ -23,7 +30,7 @@ export function Home(): ReactElement {
         <img src={ pngAcai2 } alt="" />
       </main>
 
-      <button>TOQUE PARA INICIAR</button>
+      <button onClick={ handleNavigateServiceOptions }>TOQUE PARA INICIAR</button>
     </Container>
   )
 }

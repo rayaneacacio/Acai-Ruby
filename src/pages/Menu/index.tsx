@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 
 import cremesBanner from "../../assets/cremesBanner.png"
 import acaiBanner from "../../assets/acaiBanner.png";
@@ -15,6 +15,15 @@ import { Modal } from "../../components/Modal";
 import { Container } from "./style";
 
 export function Menu(): ReactElement {
+  const [ imgPedido, setImgPedido ] = useState<string>("");
+
+  function handleOpenDialogPedido(img: string): void {
+    setImgPedido(img);
+
+    const dialog: HTMLDialogElement = document.querySelector(".dialogPedido")!;
+    dialog.style.display = "block";
+  }
+
   return (
     <Container>
       <header>
@@ -43,12 +52,12 @@ export function Menu(): ReactElement {
       </div>
 
       <main>
-        <button className="buttonMain">
+        <button className="buttonMain" onClick={() => handleOpenDialogPedido(pngAcaiPremium) }>
           <img src={ pngAcaiPremium } alt="" />
           <p>AÇAÍ PREMIUM</p>
         </button>
 
-        <button className="buttonMain">
+        <button className="buttonMain" onClick={() => handleOpenDialogPedido(pngAcaiTradicional) }>
           <img src={ pngAcaiTradicional } alt="" />
           <p>AÇAÍ TRADICIONAL</p>
         </button>
@@ -56,7 +65,7 @@ export function Menu(): ReactElement {
         <ButtonBack />
       </main>
 
-      <Modal />
+      <Modal image={ imgPedido } />
     </Container>
   )
 }
