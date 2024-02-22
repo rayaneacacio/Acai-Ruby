@@ -12,12 +12,18 @@ export const Container = styled.div`
   main {
     height: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 6rem;
-    position: relative;
-    animation: animateOpacity 1s forwards ease;
+    align-items: center;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6rem;
+      position: relative;
+      animation: animateOpacity 1s forwards ease;
+    }
   }
 
   h1 {
@@ -32,13 +38,13 @@ export const Container = styled.div`
     letter-spacing: 4px;
   }
 
-  main p:first-of-type {
+  p:first-of-type {
     font-size: 13rem;
     font-weight: 700;
     text-align: center;
   }
 
-  main p:last-of-type {
+  p:last-of-type {
     background-color: ${({ theme }) => theme.COLORS.YELLOW};
     color: ${({ theme }) => theme.COLORS.PURPLE};
     font-weight: 600;
@@ -49,14 +55,14 @@ export const Container = styled.div`
   main img {
     width: 40rem;
     position: absolute;
-    bottom: 0;
+    bottom: -16rem;
   }
 
-  main img:first-of-type {
+  img:first-of-type {
     left: -30rem;
   }
 
-  main img:last-of-type {
+  img:last-of-type {
     right: -30rem;
   }
 
@@ -65,7 +71,7 @@ export const Container = styled.div`
     font-size: 3rem;
     font-weight: 700;
     width: 100%;
+    height: 14%;
     font-size: 5rem;
-    padding: 1.5rem 0;
   }
 `;

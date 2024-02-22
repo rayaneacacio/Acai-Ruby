@@ -94,9 +94,10 @@ export const Container = styled.div`
 
   main {
     background: ${({ theme }) => theme.COLORS.WHITE};
-    padding-left: 28rem;
+    padding-right: 15rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 15rem;
     grid-area: main;
     position: relative;

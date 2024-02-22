@@ -17,17 +17,19 @@ export function Home(): ReactElement {
     <Container>
       <main>
         <div>
-          <h1>AÇAÍ PLUS</h1>
-          <h2>SUPER PROMOÇÃO</h2>
-        </div>
+          <div>
+            <h1>AÇAÍ PLUS</h1>
+            <h2>SUPER PROMOÇÃO</h2>
+          </div>
 
-        <div>
-          <p>50%</p>
-          <p> DE DESCONTO EM TODA LINHA</p>
-        </div>
+          <div>
+            <p>50%</p>
+            <p> DE DESCONTO EM TODA LINHA</p>
+          </div>
 
-        <img src={ pngAcai1 } alt="" />
-        <img src={ pngAcai2 } alt="" />
+          <img src={ pngAcai1 } alt="" />
+          <img src={ pngAcai2 } alt="" />
+        </div>
       </main>
 
       <button onClick={ handleNavigateServiceOptions }>TOQUE PARA INICIAR</button>
