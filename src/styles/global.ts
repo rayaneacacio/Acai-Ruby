@@ -84,6 +84,7 @@ export default createGlobalStyle`
     }
     to {
       height: 1rem;
+      transform: translateY(2rem);
     }
   }
 
