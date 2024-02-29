@@ -16,6 +16,7 @@ export const Container = styled.dialog`
     justify-content: space-evenly;
 
     animation: animateToTop 0.3s forwards ease;
+    transition: 0.5s;
     
     > div:first-of-type {
       display: flex;

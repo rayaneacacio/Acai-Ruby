@@ -12,7 +12,16 @@ export function Modal(props: { image: string }) {
 
   function handleCloseDialogPedido(): void {
     const dialog: HTMLDialogElement = document.querySelector(".dialogPedido")!;
-    dialog.style.display = "none";
+    const dialogDiv = dialog.querySelector("div")!;
+
+    dialog.style.animation = "animateBackgroundOpacity 0.3s linear forwards";
+    dialogDiv.style.animation = "animateToBottom 0.3s forwards";
+
+    setTimeout((): void => {
+      dialog.style.display = "none";
+      dialog.style.animation = "none";
+      dialogDiv.style.animation = "animateToTop 0.3s forwards";
+    }, 300);
   }
 
   function handleNavigateOrder(): void {

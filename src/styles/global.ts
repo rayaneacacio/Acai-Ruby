@@ -78,6 +78,15 @@ export default createGlobalStyle`
     }
   }
 
+  @keyframes animateToBottom {
+    from {
+      height: 25rem;
+    }
+    to {
+      height: 1rem;
+    }
+  }
+
   @keyframes animateToRight {
     from {
       transform: translateX(-5rem);
@@ -93,6 +102,18 @@ export default createGlobalStyle`
     }
     to {
       opacity: 1;
+    }
+  }
+
+  @keyframes animateBackgroundOpacity {
+    0% {
+      background-color: rgba(8, 8, 8, 0.64);
+    }
+    50% {
+      background-color: rgba(30,30,30,0.44254198261335786);
+    }
+    100% {
+      background-color: transparent;
     }
   }
 `;
