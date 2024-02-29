@@ -12,8 +12,8 @@ export function Cup(props: { img: string, quantity: string, si?: string, price: 
         }
       </div>
 
-      <img src={ props.img } alt="" />
-
+      <div style={{ backgroundImage: `url(${ props.img })` }}></div>
+      
       <p>R$ { props.price }</p>
     </Container>
   )

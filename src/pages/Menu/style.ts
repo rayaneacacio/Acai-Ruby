@@ -80,15 +80,15 @@ export const Container = styled.div`
       img {
         width: 5rem;
       }
-
-      &:hover, &:focus, &:focus-visible {
-        background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
-        color: ${({ theme }) => theme.COLORS.WHITE};
-      }
     }
 
     > button:nth-of-type(2) img {
       width: 9rem;
+     }
+
+     .buttonOnFocus, > button:hover, > button:focus, > button:focus-visible {
+        background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
+        color: ${({ theme }) => theme.COLORS.WHITE};
      }
   }
 
@@ -102,22 +102,22 @@ export const Container = styled.div`
     grid-area: main;
     position: relative;
 
-    .buttonMain > img {
-      width: 15rem;
-      padding: 1.3rem;
-    }
-
-    .buttonMain:first-of-type > img {
-      width: 12.7rem;
-      padding: 1rem;
-    }
-
     .buttonMain {
       width: 25rem;
       box-shadow: 0px 2px 16px 1px rgba(0, 0, 0, 0.15);
       border-radius: 2rem;
       transition: 0.1s;
       animation: animateToRight 0.5s forwards;
+      text-transform: uppercase;
+      padding-top: 1rem;
+
+      div {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 25rem;
+        height: 20rem;
+      }
 
       p {
         background-color: ${({ theme }) => theme.COLORS.PURPLE};
@@ -129,7 +129,7 @@ export const Container = styled.div`
       }
 
       &:hover, &:focus, &:focus-visible {
-        border: 2px solid ${({ theme }) => theme.COLORS.PURPLE};
+        box-shadow: 0px 0px 1px 1.5px ${({ theme }) => theme.COLORS.PURPLE};
       }
     }
   }

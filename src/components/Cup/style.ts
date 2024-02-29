@@ -6,11 +6,7 @@ export const Container = styled.div`
   width: 10rem;
   position: relative;
 
-  img {
-    width: 6rem;
-  }
-
-  div {
+  > div:first-of-type {
     background: ${({ theme }) => theme.COLORS.WHITE};
     color: ${({ theme }) => theme.COLORS.PURPLE};
     font-weight: 800;
@@ -28,6 +24,14 @@ export const Container = styled.div`
     position: absolute;
     right: -1rem;
     top: 1rem;
+  }
+
+  > div:last-of-type {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 12rem;
   }
 
   > p {

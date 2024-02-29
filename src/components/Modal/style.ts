@@ -49,15 +49,15 @@ export const Container = styled.dialog`
       border: 1px solid ${({ theme }) => theme.COLORS.PURPLE};
       border-radius: 3rem;
 
-      > div {
+      > div:first-of-type {
         width: 4.5rem;
         height: 4.5rem;
         top: 2rem;
         right: 3rem;
       }
 
-      img {
-        width: 4.5rem;
+      > div:last-of-type {
+        height: 8rem;
       }
     }
   }
