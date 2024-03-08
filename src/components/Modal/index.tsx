@@ -31,7 +31,7 @@ export function Modal(props: { image: string }) {
 
   function handleNavigateOrder(): void {
     if(pedido.size != undefined && pedido.initialPrice != undefined) {
-      navigate("/order");
+      navigate("/pedido?cremes");
     }
   }
 

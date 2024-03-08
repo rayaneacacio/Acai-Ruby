@@ -14,7 +14,7 @@ export function AcaiPlusRoutes() {
         <Route path="/services" element={ <ServiceOptions /> } />
         <Route path="/payment" element={ <PaymentOptions /> } />
         <Route path="/menu" element={ <Menu /> } />
-        <Route path="/order" element={ <Order /> } />
+        <Route path="/pedido?" element={ <Order /> } />
       </Routes>
     </BrowserRouter>
   )

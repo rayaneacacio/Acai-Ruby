@@ -25,7 +25,7 @@ export default createGlobalStyle`
     overflow-x: hidden;
 
     &::-webkit-scrollbar {
-      background: transparent;
+      background: ${({ theme }) => theme.COLORS.PURPLE};;
       width: 5px;
     }
 

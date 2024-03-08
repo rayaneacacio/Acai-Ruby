@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  text-transform: uppercase;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -11,6 +12,7 @@ export const Container = styled.div`
 
   > :first-child {
     width: 100%;
+    height: 20%;
     display: flex;
     justify-content: space-between;
     padding: 5rem 15rem 0;
@@ -46,6 +48,10 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       box-shadow: ${({ theme }) => theme.COLORS.SHADOW_SUAVE};
+    }
+
+    svg {
+      padding: 7px;
     }
   }
 
@@ -178,5 +184,48 @@ export const Container = styled.div`
   .divButtonsBackAndNext {
     display: flex;
     gap: 2rem;
+  }
+
+  .svgOnFocus {
+    background-color: ${({ theme }) => theme.COLORS.WHITE} !important;
+
+    svg {
+      border: 1px solid ${({ theme }) => theme.COLORS.PURPLE};
+      border-radius: 50%;
+      padding: 2px;
+    }
+
+    svg path {
+      fill: ${({ theme }) => theme.COLORS.PURPLE};
+    }
+  }
+`;
+
+export const Ingredients = styled.div`
+  width: 100%;
+  height: 40%;
+  padding: 5rem 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5rem;
+  animation: animateToRight 0.5s forwards;
+
+  button {
+    font-family: ${({ theme }) => theme.FONTS.ROBOTO};
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 30rem;
+    height: 5rem;
+    padding: 1rem;
+    border: 1px solid;
+    border-radius: 1.5rem;
+
+    &:hover, &:focus, &:focus-visible {
+      background-color: ${({ theme }) => theme.COLORS.WHITE};
+      color: ${({ theme }) => theme.COLORS.PURPLE};
+    }
   }
 `;

@@ -6,6 +6,7 @@ import GlobalStyles from './styles/global';
 import { AcaiSizesProvider } from './hook/acaiSizes';
 
 import { AcaiPlusRoutes } from './routes/index';
+import { AcaiComponentsProvider } from './hook/acaiComponents';
 import { PedidoProvider } from './hook/pedido';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -13,9 +14,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ThemeProvider theme={ theme }>
       <GlobalStyles />
         <AcaiSizesProvider>
-          <PedidoProvider>
-            <AcaiPlusRoutes />
-          </PedidoProvider>
+          <AcaiComponentsProvider>
+            <PedidoProvider>
+              <AcaiPlusRoutes />
+            </PedidoProvider>
+          </AcaiComponentsProvider>
         </AcaiSizesProvider>
     </ThemeProvider>
   </React.StrictMode>,
