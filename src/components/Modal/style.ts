@@ -51,7 +51,7 @@ export const Container = styled.dialog`
       border: 1px solid ${({ theme }) => theme.COLORS.PURPLE};
       border-radius: 3rem;
 
-      > button {
+      > div {
         > div:first-of-type {
           font-size: 1.4rem;
           width: 4.5rem;

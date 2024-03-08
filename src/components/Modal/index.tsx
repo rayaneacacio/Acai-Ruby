@@ -54,7 +54,9 @@ export function Modal(props: { image: string }) {
           <div className="divCups">
             {
               allAcaiSizes?.map((acaiSize: { id: number, size: string, price: string }, index: number) => (
-                <button key={ index } onClick={() => setSizeSelected(acaiSize) }> <Cup img={ props.image } quantity={ acaiSize.size } price={ acaiSize.price } /> </button>
+                <button key={ index } onClick={() => setSizeSelected(acaiSize) }> 
+                  <Cup img={ props.image } quantity={ acaiSize.size } price={ acaiSize.price } />
+                </button>
               ))
             }
           </div>

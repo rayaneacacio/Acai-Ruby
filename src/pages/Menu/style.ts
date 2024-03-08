@@ -4,14 +4,9 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   width: 100%;
   height: 100%;
-
-  display: grid;
-  grid-template-areas: 
-    "header header" 
-    "options main"
-  ;
-  grid-template-columns: 14rem 1fr;
-  grid-template-rows: 24rem 1fr;
+  display: flex;
+  flex-direction: column;
+  gap: 15rem;
   animation: animateOpacity 1s forwards ease;
 
   header {
@@ -47,54 +42,17 @@ export const Container = styled.div`
     }
   }
 
-  .options {
-    background: ${({ theme }) => theme.COLORS.WHITE};
-    width: 16rem;
-    padding: 0 3.2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    grid-area: options;
-
-    > img {
-      width: 8rem;
-      margin-bottom: 2rem;
-    }
-
-    > button {
-      color: ${({ theme }) => theme.COLORS.PURPLE};
-      font-size: 1.2rem;
-      font-weight: 700;
-      width: 100%;
-      height: 10rem;
-      padding: 1rem;
-      box-shadow: 0px 2.467px 3.7px 1.233px rgba(0, 0, 0, 0.25);
-      border-radius: 2rem;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        width: 5rem;
-      }
-    }
-
-    > button:nth-of-type(2) img {
-      width: 9rem;
-     }
-
-     .buttonOnFocus, > button:hover, > button:focus, > button:focus-visible {
-        background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
-        color: ${({ theme }) => theme.COLORS.WHITE};
-     }
+  > img {
+    width: 8rem;
+    position: absolute;
+    top: 24rem;
+    left: 2rem;
   }
 
   main {
     background: ${({ theme }) => theme.COLORS.WHITE};
-    padding-right: 15rem;
+    height: calc(100% - 22rem);
+    padding-bottom: 10rem;
     display: flex;
     align-items: center;
     justify-content: center;
