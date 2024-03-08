@@ -1,17 +1,13 @@
-import { Dispatch, ReactElement, SetStateAction, createContext, useContext, useState } from "react";
+import { ReactElement, createContext, useContext, useState } from "react";
 import { api } from "../services/api";
 
 interface IAcaiSizeContext {
   allAcaiSizes: IObjectSize[];
-  sizeSelected: IObjectSize;
-  setSizeSelected: Dispatch<SetStateAction<IObjectSize>>,
   findAllSizes: (signal: AbortSignal) => Promise<void>;
 };
 
 const initialValue = {
   allAcaiSizes: [{ id: 0, size: "", price: "" }],
-  sizeSelected: { id: 0, size: "", price: "" },
-  setSizeSelected: () => {},
   findAllSizes: async() => {},
 };
 
@@ -25,11 +21,6 @@ export const AcaiSizesContext = createContext<IAcaiSizeContext>(initialValue);
 
 function AcaiSizesProvider(props: { children: ReactElement }) {
   const [ allAcaiSizes, setAllAcaiSizes ] = useState<IObjectSize[]>([]);
-  const [ sizeSelected, setSizeSelected ] = useState<IObjectSize>({
-    id: 0,
-    size: "",
-    price: ""
-  });
 
   async function findAllSizes(signal: AbortSignal): Promise<void> {
     try {
@@ -42,7 +33,7 @@ function AcaiSizesProvider(props: { children: ReactElement }) {
   }
 
   return (
-    <AcaiSizesContext.Provider value={{ allAcaiSizes, findAllSizes, sizeSelected, setSizeSelected }}>
+    <AcaiSizesContext.Provider value={{ allAcaiSizes, findAllSizes }}>
       { props.children }
     </AcaiSizesContext.Provider>
   )
