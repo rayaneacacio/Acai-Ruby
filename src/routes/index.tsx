@@ -4,7 +4,7 @@ import { Home } from "../pages/Home";
 import { ServiceOptions } from "../pages/ServiceOptions";
 import { PaymentOptions } from "../pages/PaymentOptions";
 import { Menu } from "../pages/Menu";
-import { Order } from "../pages/Order";
+import { MontarPedido } from "../pages/MontarPedido";
 
 export function AcaiPlusRoutes() {
   return (
@@ -14,7 +14,7 @@ export function AcaiPlusRoutes() {
         <Route path="/services" element={ <ServiceOptions /> } />
         <Route path="/payment" element={ <PaymentOptions /> } />
         <Route path="/menu" element={ <Menu /> } />
-        <Route path="/pedido?" element={ <Order /> } />
+        <Route path="/pedido?" element={ <MontarPedido /> } />
       </Routes>
     </BrowserRouter>
   )

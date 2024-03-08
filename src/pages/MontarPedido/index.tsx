@@ -17,7 +17,7 @@ import { usePedido } from "../../hook/pedido";
 import { useAcaiComponents } from "../../hook/acaiComponents";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export function Order(): ReactElement {
+export function MontarPedido(): ReactElement {
   const { pedido } = usePedido();
   const { findAcaiComponents, allComponents } = useAcaiComponents();
   const url = useLocation();
