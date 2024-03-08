@@ -99,7 +99,7 @@ export default createGlobalStyle`
 
   @keyframes animateOpacity {
     from {
-      opacity: 0;
+      opacity: 0.5;
     }
     to {
       opacity: 1;

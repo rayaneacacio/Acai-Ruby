@@ -6,8 +6,11 @@ import { ButtonBack } from "../../components/ButtonBack";
 import { ButtonNext } from "../ButtonNext";
 
 import { Container } from "./style";
+import { useAcaiSizes } from "../../hook/acaiSizes";
+import { useEffect } from "react";
 
 export function Modal(props: { image: string }) {
+  const { allAcaiSizes, findAllSizes, setSizeSelected, sizeSelected } = useAcaiSizes();
   const navigate = useNavigate();
 
   function handleCloseDialogPedido(): void {
@@ -25,8 +28,20 @@ export function Modal(props: { image: string }) {
   }
 
   function handleNavigateOrder(): void {
-    navigate("/order");
+    if(sizeSelected.id != 0) {
+      navigate("/order");
+    }
   }
+
+  useEffect(() => {
+    const controller = new AbortController();
+    (async() => findAllSizes(controller.signal))();
+
+    return () => { 
+      controller.abort();
+    }
+
+  }, []);
 
   return (
     <Container className="dialogPedido">
@@ -37,17 +52,24 @@ export function Modal(props: { image: string }) {
           </div>
 
           <div className="divCups">
-            <button> <Cup img={ props.image } quantity="200" si="ML" price="6,00" /> </button>
-            <button> <Cup img={ props.image } quantity="300" si="ML" price="8,00" /> </button>
-            <button> <Cup img={ props.image } quantity="400" si="ML" price="10,00" /> </button>
-            <button> <Cup img={ props.image } quantity="500" si="ML" price="12,00" /> </button>
-            <button> <Cup img={ props.image } quantity="1L" price="20,00" /> </button>
+            {
+              allAcaiSizes?.map((acaiSize: { id: number, size: string, price: string }, index: number) => (
+                <button key={ index } onClick={() => setSizeSelected(acaiSize) }> <Cup img={ props.image } quantity={ acaiSize.size } price={ acaiSize.price } /> </button>
+              ))
+            }
           </div>
 
           <div>
             <div className="divPedido">
               <p>SELECIONADO</p>
-              <Cup img={ props.image } quantity="500" si="ML" price="12,00" />
+              <div>
+                {
+                  sizeSelected.id != 0 ?
+                  <Cup img={ props.image } quantity={ sizeSelected.size } price={ sizeSelected.price } />
+                  :
+                  <p>selecione um tamanho</p>
+                } 
+              </div>
             </div>
 
             <div className="divButtonsBackAndNext">

@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.button`
   font-size: 1.6rem;
   text-align: center;
-  width: 10rem;
   position: relative;
 
   > div:first-of-type {
@@ -22,8 +21,8 @@ export const Container = styled.div`
     justify-content: center;
 
     position: absolute;
-    right: -1rem;
     top: 1rem;
+    right: -1rem;
   }
 
   > div:last-of-type {
@@ -41,5 +40,9 @@ export const Container = styled.div`
     text-align: center;
     padding: 2px 1rem;
     border-radius: 5px;
+  }
+
+  p {
+    text-transform: uppercase;
   }
 `;

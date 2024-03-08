@@ -16,6 +16,7 @@ import { ButtonBack } from "../../components/ButtonBack";
 import { Modal } from "../../components/Modal";
 
 import { Container } from "./style";
+import { useAcaiSizes } from "../../hook/acaiSizes";
 
 interface IProduct {
   name: string,
@@ -24,6 +25,7 @@ interface IProduct {
 }
 
 export function Menu(): ReactElement {
+  const { setSizeSelected } = useAcaiSizes();
   const contentAcai: IProduct[] = [
     {
       name: "AÇAÍ PREMIUM",
@@ -45,6 +47,7 @@ export function Menu(): ReactElement {
 
     const dialog: HTMLDialogElement = document.querySelector(".dialogPedido")!;
     dialog.style.display = "block";
+    setSizeSelected({ id: 0, size: "", price: "" });
   }
 
   async function handleContentMain(buttonChosen: HTMLButtonElement, category: string): Promise<void> {

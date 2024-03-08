@@ -44,21 +44,25 @@ export const Container = styled.dialog`
 
   .divPedido {
     > div {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       width: 15rem;
+      height: 13.5rem;
       padding: 1.5rem 2.5rem;
       border: 1px solid ${({ theme }) => theme.COLORS.PURPLE};
       border-radius: 3rem;
 
-      > div:first-of-type {
-        width: 4.5rem;
-        height: 4.5rem;
-        top: 2rem;
-        right: 3rem;
-      }
+      > button {
+        > div:first-of-type {
+          font-size: 1.4rem;
+          width: 4.5rem;
+          height: 4.5rem;
+          top: 0;
+          right: 7px;
+        }
 
-      > div:last-of-type {
-        height: 8rem;
+        > div:last-of-type {
+          height: 8rem;
+        }
       }
     }
   }
