@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
 export function SvgCremes(): ReactElement {
-  return <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 61 60" fill="none">
+  return <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 61 60" fill="none">
   <g clipPath="url(#clip0_67_0)">
     <path d="M35.4268 18.9001V20.3021C35.4268 20.7861 35.8191 21.1783 36.303 21.1783C36.7869 21.1783 37.1792 20.7861 37.1792 20.3021V18.9001C37.1792 18.4161 36.7869 18.0239 36.303 18.0239C35.8191 18.0239 35.4268 18.4162 35.4268 18.9001Z" fill="#fff"/>
     <path d="M48.8506 18.9001V20.3021C48.8506 20.7861 49.2429 21.1783 49.7268 21.1783C50.2107 21.1783 50.6031 20.7861 50.6031 20.3021V18.9001C50.6031 18.4161 50.2107 18.0239 49.7268 18.0239C49.2429 18.0239 48.8506 18.4162 48.8506 18.9001Z" fill="#fff"/>

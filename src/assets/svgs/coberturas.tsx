@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
 export function SvgCoberturas(): ReactElement {
-  return <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 52 52" fill="none">
+  return <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 52 52" fill="none">
   <g clipPath="url(#clip0_75_0)">
     <path d="M20.086 5.34632C19.6712 5.34632 19.335 5.6826 19.335 6.09739V7.29909C19.335 7.71388 19.6712 8.05016 20.086 8.05016C20.5008 8.05016 20.8371 7.71388 20.8371 7.29909V6.09739C20.8371 5.6826 20.5008 5.34632 20.086 5.34632Z" fill="white"/>
     <path d="M31.5919 5.34632C31.1771 5.34632 30.8408 5.6826 30.8408 6.09739V7.29909C30.8408 7.71388 31.1771 8.05016 31.5919 8.05016C32.0067 8.05016 32.343 7.71388 32.343 7.29909V6.09739C32.343 5.6826 32.0067 5.34632 31.5919 5.34632Z" fill="white"/>
