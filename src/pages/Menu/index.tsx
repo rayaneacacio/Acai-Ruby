@@ -10,7 +10,7 @@ import { ButtonBack } from "../../components/ButtonBack";
 import { Modal } from "../../components/Modal";
 
 import { Container } from "./style";
-import { useAcaiSizes } from "../../hook/acaiSizes";
+import { usePedido } from "../../hook/pedido";
 
 interface IProduct {
   name: string,
@@ -18,7 +18,7 @@ interface IProduct {
 }
 
 export function Menu(): ReactElement {
-  const { setSizeSelected } = useAcaiSizes();
+  const { insertPedido } = usePedido();
   const contentAcai: IProduct[] = [
     {
       name: "AÇAÍ PREMIUM",
@@ -32,12 +32,12 @@ export function Menu(): ReactElement {
 
   const [ imgPedido, setImgPedido ] = useState<string>("");
 
-  function handleOpenDialogPedido(img: string): void {
-    setImgPedido(img);
-
+  function handlePedido(product: IProduct): void {
     const dialog: HTMLDialogElement = document.querySelector(".dialogPedido")!;
     dialog.style.display = "block";
-    setSizeSelected({ id: 0, size: "", price: "" });
+
+    setImgPedido(product.image);
+    insertPedido({ name: product.name, image: product.image });
   }
 
   return (
@@ -54,7 +54,7 @@ export function Menu(): ReactElement {
         {
           contentAcai &&
           contentAcai.map((product: IProduct, index: number) => (
-            <button key={ index } className="buttonMain" onClick={() => handleOpenDialogPedido(product.image)}>
+            <button key={ index } className="buttonMain" onClick={() => handlePedido(product)}>
               <div style={{ backgroundImage: `url(${product.image})` }}></div>
               <p>{ product.name }</p>
             </button>

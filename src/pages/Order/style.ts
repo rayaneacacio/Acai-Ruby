@@ -70,7 +70,7 @@ export const Container = styled.div`
 
   .pedido {
     background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
-    font-size: 1.2rem;
+    font-size: 1rem;
     width: 12rem;
     height: 12rem;
     border-radius: 18px;
@@ -145,6 +145,10 @@ export const Container = styled.div`
     justify-content: center;
     gap: 2rem;
     margin-bottom: 5px;
+
+    span {
+      width: 2rem;
+    }
 
     button {
       background-color: ${({ theme }) => theme.COLORS.PURPLE};

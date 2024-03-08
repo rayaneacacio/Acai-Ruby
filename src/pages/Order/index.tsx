@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 
 import { SvgCremes } from "../../assets/svgs/cremes";
 import { SvgComplementos } from "../../assets/svgs/complementos";
@@ -8,15 +8,18 @@ import { SvgCheckMark } from "../../assets/svgs/checkmark";
 import { SvgView } from "../../assets/svgs/view";
 import { SvgMinus } from "../../assets/svgs/minus";
 import { SvgPlus } from "../../assets/svgs/plus";
-import pngAcaiPremium from "../../assets/acai_premium.png";
 
 import { Ingredients } from "../../components/Ingredients";
 import { ButtonBack } from "../../components/ButtonBack";
 import { ButtonNext } from "../../components/ButtonNext";
 
 import { Container } from "./style";
+import { usePedido } from "../../hook/pedido";
 
 export function Order(): ReactElement {
+  const { pedido } = usePedido();
+  const [ count, setCount ] = useState<number>(1);
+  
   return (
     <Container>
       <div>
@@ -39,9 +42,14 @@ export function Order(): ReactElement {
       <div>
         <div className="pedido">
           <SvgCheckMark />
-          <img src={ pngAcaiPremium } alt="" />
-          <p><strong>AÇAÍ PREMIUM</strong></p>
-          <p>500 ML</p>
+          {
+            pedido.name != undefined &&
+            <>
+              <img src={ pedido.image } alt="" />
+              <p><strong>{ pedido.name }</strong></p>
+              <p>{ pedido.size }</p>
+            </>
+          }
         </div>
 
         <div className="recibo">
@@ -51,31 +59,34 @@ export function Order(): ReactElement {
           </button>
 
           <div>
-            <p>
-              <span><strong>1x Açaí Premium</strong></span>
-              <span><strong>R$ 12,00</strong></span>
-            </p>
+            {
+              pedido.name != undefined &&
+              <>
+                <p>
+                  <span><strong>{ pedido.name }</strong></span>
+                  <span><strong>{ pedido.size }</strong></span>
+                </p>
 
-            <p>
-              <span>Tamanho: <strong>1x 500ml</strong></span>
-              <span><strong>Subtotal:</strong> R$ 12,00</span>
-            </p>
+                <p>
+                  <span>Tamanho: <strong>{ pedido.size }</strong></span>
+                  <span><strong>Subtotal:</strong>{ pedido.initialPrice }</span>
+                </p>
 
-            <p><span>Cremes: <strong>1x Cupuaçu</strong></span></p>
-
-            <p>
-              <span>Complementos: <strong>1x Leite em Pó...</strong></span>
-              <span><strong>Total:</strong> R$ 12,00</span>
-            </p>
+                <p>
+                  <span></span>
+                  <span><strong>Total:</strong>{ pedido.totalPrice }</span>
+                </p>
+              </>
+            }
           </div>
         </div>
 
         <div>
           <div>
             <div className="divButtonsCount">
-              <button><SvgMinus /></button>
-              <span>1</span>
-              <button><SvgPlus /></button>
+              <button onClick={() => setCount(count-1) } ><SvgMinus /></button>
+              <span>{ count }</span>
+              <button onClick={() => setCount(count+1) }><SvgPlus /></button>
             </div>
 
             <p>CUPUAÇU</p>
