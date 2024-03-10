@@ -8,11 +8,14 @@ import { Button } from "../../components/Button";
 import { ButtonBack } from "../../components/ButtonBack";
 
 import { Container } from "./style";
+import { usePedido } from "../../hook/pedido";
 
 export function ServiceOptions(): ReactElement {
+  const { insertPedido } = usePedido();
   const navigate = useNavigate();
 
-  function handleNavigatePaymentOptions() {
+  function handleNavigatePaymentOptions(formaDeServico: string): void {
+    insertPedido({ servico: formaDeServico });
     navigate("/payment");
   }
 
@@ -21,8 +24,8 @@ export function ServiceOptions(): ReactElement {
       <h1>ESCOLHA UMA DAS OPÇÕES ABAIXO ;)</h1>
 
       <div>
-        <Button icon={ SvgFood() } text="PARA COMER AQUI" onClick={ handleNavigatePaymentOptions } />
-        <Button icon={ SvgBox() } text="PARA LEVAR" onClick={ handleNavigatePaymentOptions } />
+        <Button icon={ SvgFood() } text="PARA COMER AQUI" onClick={() => handleNavigatePaymentOptions("comer aqui") } />
+        <Button icon={ SvgBox() } text="PARA LEVAR" onClick={() => handleNavigatePaymentOptions("levar") } />
       </div>
 
       <ButtonBack />

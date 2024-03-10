@@ -22,13 +22,16 @@ export function Home(): ReactElement {
             <h2>SUPER PROMOÇÃO</h2>
           </div>
 
-          <div>
-            <p>50%</p>
-            <p> DE DESCONTO EM TODA LINHA</p>
+          <div className="divImgs">
+            <img src={ pngAcai1 } alt="" />
+            
+            <div>
+              <p>50%</p>
+              <p> DE DESCONTO EM TODA LINHA</p>
+            </div>
+            
+            <img src={ pngAcai2 } alt="" />
           </div>
-
-          <img src={ pngAcai1 } alt="" />
-          <img src={ pngAcai2 } alt="" />
         </div>
       </main>
 

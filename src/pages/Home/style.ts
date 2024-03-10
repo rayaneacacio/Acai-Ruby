@@ -10,19 +10,21 @@ export const Container = styled.div`
   justify-content: space-between;
 
   main {
-    height: 100%;
+    height: 100rem;
+    padding-top: 15rem;
     display: flex;
-    justify-content: center;
     align-items: center;
 
     > div {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 6rem;
       position: relative;
       animation: animateOpacity 1s forwards ease;
+    }
+
+    .divImgs {
+      display: flex;
     }
   }
 
@@ -42,6 +44,7 @@ export const Container = styled.div`
     font-size: 13rem;
     font-weight: 700;
     text-align: center;
+    padding-top: 6rem;
   }
 
   p:last-of-type {
@@ -54,16 +57,7 @@ export const Container = styled.div`
 
   main img {
     width: 40rem;
-    position: absolute;
-    bottom: -16rem;
-  }
-
-  img:first-of-type {
-    left: -30rem;
-  }
-
-  img:last-of-type {
-    right: -30rem;
+    height: 40rem;
   }
 
   button {
@@ -71,7 +65,8 @@ export const Container = styled.div`
     font-size: 3rem;
     font-weight: 700;
     width: 100%;
-    height: 14%;
+    height: 13rem;
+    padding: 1rem;
     font-size: 5rem;
   }
 `;

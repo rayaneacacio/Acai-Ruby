@@ -3,11 +3,13 @@ import { Dispatch, ReactElement, SetStateAction, createContext, useContext, useE
 interface IPedidoContext {
   pedido: IPedido;
   setPedido: Dispatch<SetStateAction<IPedido>>;
-  insertPedido: (propsPedido: {}) => void
+  insertPedido: (propsPedido: {}) => void;
 };
 
 const initialValue = {
   pedido: {
+    servico: undefined,
+    pagamento: undefined,
     name: undefined,
     image: undefined,
     size: undefined,
@@ -20,6 +22,8 @@ const initialValue = {
 };
 
 interface IPedido {
+  servico: string | undefined,
+  pagamento: string | undefined,
   name: string | undefined,
   image: string | undefined,
   size: string | undefined,
@@ -34,6 +38,8 @@ function PedidoProvider(props: { children: ReactElement }) {
   const [ pedido, setPedido ] = useState<IPedido>(initialValue.pedido);
 
   function insertPedido(propsPedido: {
+    servico?: string,
+    pagamento?: string,
     name?: string,
     image?: string,
     size?: string,
@@ -42,6 +48,8 @@ function PedidoProvider(props: { children: ReactElement }) {
     acaiComponents?: {}
   }): void {
     const values = {
+      servico: propsPedido.servico ?? pedido.servico,
+      pagamento: propsPedido.pagamento ?? pedido.pagamento,
       name: propsPedido.name ?? pedido.name,
       image: propsPedido.image ?? pedido.image,
       size: propsPedido.size ?? pedido.size,
