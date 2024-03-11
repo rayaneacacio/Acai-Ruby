@@ -159,6 +159,10 @@ export function MontarPedido(): ReactElement {
   }
 
   function savePedido(): void {
+    if(!propsMontarAcai.componentSelected) {
+      return;
+    }
+
     switch(propsMontarAcai.category) {
       case "cremes": 
         insertPedido({
@@ -296,12 +300,12 @@ export function MontarPedido(): ReactElement {
                 </p>
 
                 {
-                  propsMontarAcai.category == "cremes" && propsMontarAcai.componentSelected != undefined ?
+                  propsMontarAcai.category == "cremes" && propsMontarAcai.componentSelected ?
                   <p> 
                     <span>Creme: <strong>{ propsMontarAcai.componentSelected }</strong>
                     </span>
                   </p>
-                  : pedido.acaiComponents.creme != undefined &&
+                  : pedido.acaiComponents.creme &&
                   <p>
                     <span>Creme: <strong>{ pedido.acaiComponents.creme }</strong></span>
                   </p>
@@ -313,7 +317,7 @@ export function MontarPedido(): ReactElement {
                     <span>Complementos: <strong>{ `${allAcaiComponentsSelected[0]}...` }</strong> </span>
                   </p>
                   : 
-                  pedido.acaiComponents.complementos != undefined &&
+                  pedido.acaiComponents.complementos &&
                   <p>
                     <span>Complementos: <strong>{ `${pedido.acaiComponents.complementos[0]}...` }</strong> </span>
                   </p>
