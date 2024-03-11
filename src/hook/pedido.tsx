@@ -4,6 +4,7 @@ interface IPedidoContext {
   pedido: IPedido;
   setPedido: Dispatch<SetStateAction<IPedido>>;
   insertPedido: (propsPedido: {}) => void;
+  cancelPedido: () => void;
 };
 
 const initialValue = {
@@ -15,10 +16,16 @@ const initialValue = {
     size: undefined,
     initialPrice: undefined,
     totalPrice: undefined,
-    acaiComponents: undefined
+    acaiComponents: {
+      creme:  undefined,
+      complementos: undefined,
+      cobertura: undefined,
+      extras: undefined
+    }
   },
   setPedido: () => {},
-  insertPedido: () => {}
+  insertPedido: () => {},
+  cancelPedido: () => {}
 };
 
 interface IPedido {
@@ -29,7 +36,14 @@ interface IPedido {
   size: string | undefined,
   initialPrice: string | undefined,
   totalPrice: string | undefined,
-  acaiComponents: {} | undefined
+  acaiComponents: IComponentsPedido
+}
+
+interface IComponentsPedido {
+  creme: string | undefined,
+  complementos: string[] | undefined,
+  cobertura: string | undefined,
+  extras: string[] | undefined
 }
 
 export const PedidoContext = createContext<IPedidoContext>(initialValue);
@@ -45,7 +59,7 @@ function PedidoProvider(props: { children: ReactElement }) {
     size?: string,
     initialPrice?: string,
     totalPrice?: string,
-    acaiComponents?: {}
+    acaiComponents?: IComponentsPedido
   }): void {
     const values = {
       servico: propsPedido.servico ?? pedido.servico,
@@ -62,6 +76,21 @@ function PedidoProvider(props: { children: ReactElement }) {
     sessionStorage.setItem("pedido", JSON.stringify(values));
   }
 
+  function cancelPedido(): void {
+    const newValues = {
+      ...pedido,
+      name: initialValue.pedido.name,
+      image: initialValue.pedido.image,
+      size: initialValue.pedido.size,
+      initialPrice: initialValue.pedido.initialPrice,
+      totalPrice: initialValue.pedido.totalPrice,
+      acaiComponents: initialValue.pedido.acaiComponents
+    }
+
+    setPedido(newValues);
+    sessionStorage.setItem("pedido", JSON.stringify(newValues));
+  }
+
   useEffect(() => {
     const pedidoSessionStorage = sessionStorage.getItem("pedido");
 
@@ -71,7 +100,7 @@ function PedidoProvider(props: { children: ReactElement }) {
   }, []);
 
   return (
-    <PedidoContext.Provider value={{ pedido, setPedido, insertPedido }}>
+    <PedidoContext.Provider value={{ pedido, setPedido, insertPedido, cancelPedido }}>
       { props.children }
     </PedidoContext.Provider>
   )

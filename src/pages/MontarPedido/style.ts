@@ -62,6 +62,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 3rem;
 
     > :last-child {
       color: ${({ theme }) => theme.COLORS.PURPLE};
@@ -220,12 +221,16 @@ export const Ingredients = styled.div`
     width: 30rem;
     height: 5rem;
     padding: 1rem;
-    border: 1px solid;
     border-radius: 1.5rem;
+    box-shadow: 0px 0px 1px 1.3px ${({ theme }) => theme.COLORS.WHITE};
 
-    &:hover, &:focus, &:focus-visible {
-      background-color: ${({ theme }) => theme.COLORS.WHITE};
-      color: ${({ theme }) => theme.COLORS.PURPLE};
+    &:focus-visible {
+      box-shadow: 0px 0px 1px 4px ${({ theme }) => theme.COLORS.WHITE};
     }
+  }
+
+  .buttonOnFocus{
+    background-color: ${({ theme }) => theme.COLORS.WHITE};
+    color: ${({ theme }) => theme.COLORS.PURPLE};
   }
 `;

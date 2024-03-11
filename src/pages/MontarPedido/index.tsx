@@ -18,7 +18,7 @@ import { useAcaiComponents } from "../../hook/acaiComponents";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export function MontarPedido(): ReactElement {
-  const { pedido } = usePedido();
+  const { pedido, insertPedido, cancelPedido } = usePedido();
   const { findAcaiComponents, allComponents } = useAcaiComponents();
   const url = useLocation();
   const navigate = useNavigate();
@@ -31,25 +31,49 @@ export function MontarPedido(): ReactElement {
     category: undefined,
     components: [],
     componentSelected: undefined
-  });
+  }); //propriedades de acai referentes a cada categoria;
 
   const [ subtitle, setSubtitle ]  = useState<string>("");
   const [ count, setCount ] = useState<number>(1);
+  const [ allAcaiComponentsSelected, setAllAcaiComponentsSelected ] = useState<string[]>([]); //para quando for
+  // necessario selecionar mais de um componente na montagem de acai(complementos e extras);
 
   function handleNextNavigation(): void {
+    savePedido();
+
     switch(propsMontarAcai.category) {
       case "cremes":
-        navigate(`/pedido?complementos`);
+        if(propsMontarAcai.componentSelected != undefined) {
+          navigate(`/pedido?complementos`);
+        }
         break;
+
       case "complementos":
-        navigate(`/pedido?coberturas`);
-        break
-      case "coberturas":
-        navigate(`/pedido?extras`);
+        if(allAcaiComponentsSelected.length > 0) {
+          navigate(`/pedido?coberturas`);
+        }
         break;
+
+      case "coberturas":
+        if(propsMontarAcai.componentSelected != undefined) {
+          navigate(`/pedido?extras`);
+        }
+        break;
+
       case "extras":
         break;
     }
+  }
+
+  function handleBackNavigation(): void {
+    const svg = document.querySelector(`.svg_${propsMontarAcai.category}`) as SVGElement;
+    svg?.classList.remove("svgOnFocus");
+
+    if(propsMontarAcai.category == "cremes") {
+      cancelPedido();
+    }
+    
+    navigate(-1);
   }
 
   function handleSubtitle(category: string): void {
@@ -70,12 +94,111 @@ export function MontarPedido(): ReactElement {
   }
 
   function handleSvg(category: string): void {
-    Array.from(document.querySelectorAll(".divSvgs div")!).map(divSvg => {
-      divSvg.classList.remove("svgOnFocus");
-    });
+    const allSvgs = [
+      "cremes",
+      "complementos",
+      "coberturas",
+      "extras"
+    ];
 
-    const svg = document.querySelector(`.svg_${category}`) as SVGElement;
-    svg.classList.add("svgOnFocus");
+    for(let i = 0; i <= 3; i++) {
+      if(allSvgs[i] == category) {
+        const svg = document.querySelector(`.svg_${ allSvgs[i] }`) as SVGElement;
+        const indexOfCategory = allSvgs.indexOf(category);
+        const categoriasAnteriores = allSvgs.slice(0, indexOfCategory);
+
+        svg.classList.add("svgOnFocus");
+        categoriasAnteriores?.map(item => {
+          (document.querySelector(`.svg_${ item }`) as SVGElement).classList.add("svgOnFocus");
+        });
+      }
+    }
+
+  }
+
+  function handleAddAcaiComponent(acaiComponentName: string, buttonSelected: HTMLButtonElement): void {
+    if(buttonSelected.classList.contains("buttonOnFocus")) {
+      const complementosFiltered = allAcaiComponentsSelected.filter(complemento => complemento != acaiComponentName);
+      setAllAcaiComponentsSelected(complementosFiltered);
+      buttonSelected.classList.remove("buttonOnFocus");
+      return;
+    }
+
+    switch(propsMontarAcai.category)  {
+      case "complementos":
+        if(allAcaiComponentsSelected.length < 3) {
+          setAllAcaiComponentsSelected([...allAcaiComponentsSelected, acaiComponentName]);
+        } else {
+          const complementosFiltered = allAcaiComponentsSelected.slice(1, 3);
+          const allButtonsSelected: HTMLButtonElement[] = Array.from(document.querySelectorAll(".buttonOnFocus"));
+          allButtonsSelected.map(btn => {
+            if((btn.innerText).toLowerCase() == allAcaiComponentsSelected[0]) {
+              btn.classList.remove("buttonOnFocus");
+            }
+          });
+          setAllAcaiComponentsSelected(complementosFiltered.concat(acaiComponentName));
+        }
+        break;
+
+      case "extras":
+        setAllAcaiComponentsSelected([...allAcaiComponentsSelected, acaiComponentName]);
+        break;
+
+      default:
+        handleClearButtons();
+        break;
+    }
+  
+    buttonSelected.classList.add("buttonOnFocus");
+    setPropsMontarAcai({ ...propsMontarAcai, componentSelected: acaiComponentName });
+  }
+
+  function handleClearButtons(): void {
+    const allButtons: HTMLButtonElement[] = Array.from(document.querySelectorAll(".ingredients button"));
+    allButtons.map(btn => btn.classList.remove("buttonOnFocus"));
+  }
+
+  function savePedido(): void {
+    switch(propsMontarAcai.category) {
+      case "cremes": 
+        insertPedido({
+          ...pedido, 
+          acaiComponents: { 
+            creme: propsMontarAcai.componentSelected 
+          }
+        });
+        break;
+
+      case "complementos": 
+        insertPedido({
+          ...pedido, 
+          acaiComponents: { 
+            ...pedido.acaiComponents, 
+            complementos: allAcaiComponentsSelected 
+          }
+        });
+        break;
+      case "coberturas": 
+        insertPedido({
+          ...pedido, 
+          acaiComponents: { 
+            ...pedido.acaiComponents, 
+            cobertura: propsMontarAcai.componentSelected 
+          }
+        });
+        break;
+
+      case "extras":
+        insertPedido({
+          ...pedido, 
+          acaiComponents: { 
+            ...pedido.acaiComponents, 
+            extras: allAcaiComponentsSelected 
+          }
+        });
+        break;
+    }
+        
   }
 
   useEffect(() => {
@@ -89,6 +212,8 @@ export function MontarPedido(): ReactElement {
   }, []);
 
   useEffect(() => {
+    setAllAcaiComponentsSelected([]);
+
     if(Object.values(allComponents).every(index => index.length > 0)) {
       const category = url.search.split("?")[1] as "cremes" || "complementos" || "coberturas" || "extras";
       const components = allComponents[category];
@@ -96,7 +221,7 @@ export function MontarPedido(): ReactElement {
       setPropsMontarAcai({
         category: category,
         components: components,
-        componentSelected: components[0].name,
+        componentSelected: undefined,
       });
 
       handleSubtitle(category);
@@ -104,7 +229,12 @@ export function MontarPedido(): ReactElement {
     }
 
   }, [ allComponents, url ]);
-  
+
+  useEffect(() => {
+    handleClearButtons();
+
+  }, [ propsMontarAcai.category ]);
+
   return (
     <Container>
       <div>
@@ -122,10 +252,12 @@ export function MontarPedido(): ReactElement {
         <div className="svg_extras"><SvgExtras /></div>
       </div>
 
-      <Ingredients>
+      <Ingredients className="ingredients">
         {
-          propsMontarAcai.components?.map((creme: { id: number, name: string, type: string }, index: number) => (
-            <button key={ index } onClick={() => setPropsMontarAcai({ ...propsMontarAcai, componentSelected: creme.name })}>{ creme.name }</button>
+          propsMontarAcai.components?.map((acaiComponent: { id: number, name: string, type: string }, index: number) => (
+            <button key={ index } onClick={(event) => handleAddAcaiComponent(acaiComponent.name, event.currentTarget) }>
+              { acaiComponent.name }
+            </button>
           ))
         }
       </Ingredients>
@@ -163,6 +295,30 @@ export function MontarPedido(): ReactElement {
                   <span><strong>Subtotal:</strong>{ pedido.initialPrice }</span>
                 </p>
 
+                {
+                  propsMontarAcai.category == "cremes" && propsMontarAcai.componentSelected != undefined ?
+                  <p> 
+                    <span>Creme: <strong>{ propsMontarAcai.componentSelected }</strong>
+                    </span>
+                  </p>
+                  : pedido.acaiComponents.creme != undefined &&
+                  <p>
+                    <span>Creme: <strong>{ pedido.acaiComponents.creme }</strong></span>
+                  </p>
+                }
+
+                {
+                  propsMontarAcai.category == "complementos" && allAcaiComponentsSelected.length > 0 ? 
+                  <p>
+                    <span>Complementos: <strong>{ `${allAcaiComponentsSelected[0]}...` }</strong> </span>
+                  </p>
+                  : 
+                  pedido.acaiComponents.complementos != undefined &&
+                  <p>
+                    <span>Complementos: <strong>{ `${pedido.acaiComponents.complementos[0]}...` }</strong> </span>
+                  </p>
+                }
+
                 <p>
                   <span></span>
                   <span><strong>Total:</strong>{ pedido.initialPrice }</span>
@@ -184,7 +340,7 @@ export function MontarPedido(): ReactElement {
           </div>
 
           <div className="divButtonsBackAndNext">
-            <ButtonBack />
+            <ButtonBack onClick={ handleBackNavigation } />
             <ButtonNext onClick={ handleNextNavigation }/>
           </div>
         </div>
