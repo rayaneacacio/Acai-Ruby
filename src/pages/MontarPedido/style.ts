@@ -200,6 +200,14 @@ export const Container = styled.div`
       fill: ${({ theme }) => theme.COLORS.PURPLE};
     }
   }
+
+  .divIsLoading {
+    font-size: 2rem;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const Ingredients = styled.div`

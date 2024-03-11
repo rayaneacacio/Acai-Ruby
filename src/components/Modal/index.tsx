@@ -7,13 +7,14 @@ import { ButtonNext } from "../ButtonNext";
 
 import { Container } from "./style";
 import { useAcaiSizes } from "../../hook/acaiSizes";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePedido } from "../../hook/pedido";
 
 export function Modal(props: { image: string }) {
   const { allAcaiSizes, findAllSizes } = useAcaiSizes();
   const { pedido, insertPedido } = usePedido();
   const navigate = useNavigate();
+  const [ isLoading, setIsLoading ] = useState(true);
 
   function handleCloseDialogPedido(): void {
     const dialog: HTMLDialogElement = document.querySelector(".dialogPedido")!;
@@ -37,13 +38,20 @@ export function Modal(props: { image: string }) {
 
   useEffect(() => {
     const controller = new AbortController();
-    (async() => findAllSizes(controller.signal))();
+    (async() => await findAllSizes(controller.signal))();
 
     return () => { 
       controller.abort();
     }
 
   }, []);
+
+  useEffect(() => {
+    if(allAcaiSizes.length > 0) {
+      setIsLoading(false);
+    }
+
+  }, [ allAcaiSizes ]);
 
   return (
     <Container className="dialogPedido">
@@ -55,6 +63,9 @@ export function Modal(props: { image: string }) {
 
           <div className="divCups">
             {
+              isLoading ?
+              <div>CARREGANDO...</div>
+              :
               allAcaiSizes?.map((acaiSize: { id: number, size: string, price: string }, index: number) => (
                 <button key={ index } onClick={() => 
                   insertPedido({ size: acaiSize.size, initialPrice: acaiSize.price })

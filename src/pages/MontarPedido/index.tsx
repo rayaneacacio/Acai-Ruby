@@ -37,6 +37,7 @@ export function MontarPedido(): ReactElement {
   const [ count, setCount ] = useState<number>(1);
   const [ allAcaiComponentsSelected, setAllAcaiComponentsSelected ] = useState<string[]>([]); //para quando for
   // necessario selecionar mais de um componente na montagem de acai(complementos e extras);
+  const [ isLoading, setIsLoading ] = useState<boolean>(true);
 
   function handleNextNavigation(): void {
     savePedido();
@@ -229,7 +230,8 @@ export function MontarPedido(): ReactElement {
       });
 
       handleSubtitle(category);
-      handleSvg(category)
+      handleSvg(category);
+      setIsLoading(false);
     }
 
   }, [ allComponents, url ]);
@@ -256,15 +258,20 @@ export function MontarPedido(): ReactElement {
         <div className="svg_extras"><SvgExtras /></div>
       </div>
 
-      <Ingredients className="ingredients">
-        {
-          propsMontarAcai.components?.map((acaiComponent: { id: number, name: string, type: string }, index: number) => (
-            <button key={ index } onClick={(event) => handleAddAcaiComponent(acaiComponent.name, event.currentTarget) }>
-              { acaiComponent.name }
-            </button>
-          ))
-        }
-      </Ingredients>
+      {
+        isLoading ?
+        <div className="divIsLoading">CARREGANDO...</div>
+        :
+        <Ingredients className="ingredients">
+          {
+            propsMontarAcai.components?.map((acaiComponent: { id: number, name: string, type: string }, index: number) => (
+              <button key={ index } onClick={(event) => handleAddAcaiComponent(acaiComponent.name, event.currentTarget) }>
+                { acaiComponent.name }
+              </button>
+            ))
+          }
+        </Ingredients>
+      }
 
       <div>
         <div className="pedido">
