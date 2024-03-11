@@ -323,7 +323,7 @@ export function MontarPedido(): ReactElement {
                   <p>
                     <span>Complementos: <strong>{ `${allAcaiComponentsSelected[0]}...` }</strong> </span>
                   </p>
-                  : pedido.acaiComponents & pedido.acaiComponents.complementos &&
+                  : pedido.acaiComponents && pedido.acaiComponents.complementos &&
                   <p>
                     <span>Complementos: <strong>{ `${pedido.acaiComponents.complementos[0]}...` }</strong> </span>
                   </p>
