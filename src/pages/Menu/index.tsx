@@ -44,7 +44,7 @@ export function Menu(): ReactElement {
     <Container>
       <header>
         <img src={ cremesBanner } alt="" />
-        <img src={ acaiBanner } alt="" />
+        <div style={{ backgroundImage: `url(${acaiBanner})` }}></div>
         <p>COMPRE AQUI!</p>
       </header>
 

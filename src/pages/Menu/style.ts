@@ -14,13 +14,18 @@ export const Container = styled.div`
     text-align: center;
     height: 22rem;
     padding: 1rem;
-    grid-area: header;
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
     z-index: 1;
+    display: flex;
+    justify-content: center;
 
-    img {
+    > div {
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
       width: 46rem;
+      height: 27rem;
     }
 
     img:first-of-type {
@@ -51,13 +56,12 @@ export const Container = styled.div`
 
   main {
     background: ${({ theme }) => theme.COLORS.WHITE};
-    height: calc(100% - 22rem);
+    height: 100%;
     padding-bottom: 10rem;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15rem;
-    grid-area: main;
     position: relative;
 
     .buttonMain {
