@@ -68,7 +68,7 @@ export function Modal(props: { image: string }) {
               :
               allAcaiSizes?.map((acaiSize: { id: number, size: string, price: string }, index: number) => (
                 <button key={ index } onClick={() => 
-                  insertPedido({ size: acaiSize.size, initialPrice: acaiSize.price })
+                  insertPedido({ size: acaiSize.size, initialPrice: acaiSize.price, totalPrice: acaiSize.price })
                 }> 
                   <Cup img={ props.image } quantity={ acaiSize.size } price={ acaiSize.price } />
                 </button>

@@ -68,7 +68,7 @@ function PedidoProvider(props: { children: ReactElement }) {
       image: propsPedido.image ?? pedido.image,
       size: propsPedido.size ?? pedido.size,
       initialPrice: propsPedido.initialPrice ?? pedido.initialPrice,
-      totalPrice: propsPedido.totalPrice ?? pedido.initialPrice,
+      totalPrice: propsPedido.totalPrice ?? pedido.totalPrice,
       acaiComponents: propsPedido.acaiComponents ?? pedido.acaiComponents
     }
 

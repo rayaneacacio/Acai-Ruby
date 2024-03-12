@@ -35,13 +35,13 @@ export function MontarPedido(): ReactElement {
 
   const [ subtitle, setSubtitle ]  = useState<string>("");
   const [ count, setCount ] = useState<number>(1);
-  const [ allAcaiComponentsSelected, setAllAcaiComponentsSelected ] = useState<string[]>([]); //para quando for
-  // necessario selecionar mais de um componente na montagem de acai(complementos e extras);
+  const [ allAcaiComplementosSelected, setAllAcaiComplementosSelected ] = useState<string[]>([]); //todos
+  // os valores de complementos adicionados (apenas 3);
+  const [ allAcaiExtrasSelected, setAllAcaiExtrasSelected ] = useState<{ name: string, amount: number }[]>([]); //todos
+  //os valores de componentes extras adicionados e sua respectiva quantidade;
   const [ isLoading, setIsLoading ] = useState<boolean>(true);
 
   function handleNextNavigation(): void {
-    savePedido();
-
     switch(propsMontarAcai.category) {
       case "cremes":
         if(propsMontarAcai.componentSelected != undefined) {
@@ -50,7 +50,7 @@ export function MontarPedido(): ReactElement {
         break;
 
       case "complementos":
-        if(allAcaiComponentsSelected.length > 0) {
+        if(allAcaiComplementosSelected.length > 0) {
           navigate(`/pedido?coberturas`);
         }
         break;
@@ -119,30 +119,28 @@ export function MontarPedido(): ReactElement {
 
   function handleAddAcaiComponent(acaiComponentName: string, buttonSelected: HTMLButtonElement): void {
     if(buttonSelected.classList.contains("buttonOnFocus")) {
-      const complementosFiltered = allAcaiComponentsSelected.filter(complemento => complemento != acaiComponentName);
-      setAllAcaiComponentsSelected(complementosFiltered);
-      buttonSelected.classList.remove("buttonOnFocus");
+      handleRemoveAcaiComponent(acaiComponentName, buttonSelected);
       return;
     }
 
     switch(propsMontarAcai.category)  {
       case "complementos":
-        if(allAcaiComponentsSelected.length < 3) {
-          setAllAcaiComponentsSelected([...allAcaiComponentsSelected, acaiComponentName]);
+        if(allAcaiComplementosSelected.length < 3) {
+          setAllAcaiComplementosSelected([...allAcaiComplementosSelected, acaiComponentName]);
         } else {
-          const complementosFiltered = allAcaiComponentsSelected.slice(1, 3);
+          const complementosFiltered = allAcaiComplementosSelected.slice(1, 3);
           const allButtonsSelected: HTMLButtonElement[] = Array.from(document.querySelectorAll(".buttonOnFocus"));
           allButtonsSelected.map(btn => {
-            if((btn.innerText).toLowerCase() == allAcaiComponentsSelected[0]) {
+            if((btn.innerText).toLowerCase() == allAcaiComplementosSelected[0]) {
               btn.classList.remove("buttonOnFocus");
             }
           });
-          setAllAcaiComponentsSelected(complementosFiltered.concat(acaiComponentName));
+          setAllAcaiComplementosSelected(complementosFiltered.concat(acaiComponentName));
         }
         break;
 
       case "extras":
-        setAllAcaiComponentsSelected([...allAcaiComponentsSelected, acaiComponentName]);
+        setAllAcaiExtrasSelected([...allAcaiExtrasSelected, { name: acaiComponentName, amount: count } ]);
         break;
 
       default:
@@ -154,16 +152,22 @@ export function MontarPedido(): ReactElement {
     setPropsMontarAcai({ ...propsMontarAcai, componentSelected: acaiComponentName });
   }
 
+  function handleRemoveAcaiComponent(acaiComponentName: string, buttonSelected: HTMLButtonElement): void {
+    const complementosFiltered = allAcaiComplementosSelected.filter(complemento => complemento != acaiComponentName);
+    const extrasFiltered = allAcaiExtrasSelected.filter(extra => extra.name != acaiComponentName);
+
+    setAllAcaiComplementosSelected(complementosFiltered);
+    setAllAcaiExtrasSelected(extrasFiltered);
+
+    buttonSelected.classList.remove("buttonOnFocus");
+  }
+
   function handleClearButtons(): void {
     const allButtons: HTMLButtonElement[] = Array.from(document.querySelectorAll(".ingredients button"));
     allButtons.map(btn => btn.classList.remove("buttonOnFocus"));
   }
 
   function savePedido(): void {
-    if(!propsMontarAcai.componentSelected) {
-      return;
-    }
-
     switch(propsMontarAcai.category) {
       case "cremes": 
         insertPedido({
@@ -179,7 +183,7 @@ export function MontarPedido(): ReactElement {
           ...pedido, 
           acaiComponents: { 
             ...pedido.acaiComponents, 
-            complementos: allAcaiComponentsSelected 
+            complementos: allAcaiComplementosSelected 
           }
         });
         break;
@@ -194,16 +198,32 @@ export function MontarPedido(): ReactElement {
         break;
 
       case "extras":
+        const totalPrice = calculateTotalPrice();
         insertPedido({
           ...pedido, 
+          totalPrice: totalPrice,
           acaiComponents: { 
             ...pedido.acaiComponents, 
-            extras: allAcaiComponentsSelected 
+            extras: allAcaiExtrasSelected 
           }
         });
         break;
     }
         
+  }
+
+  function calculateTotalPrice(): string {
+    let priceExtras = 0;
+    allAcaiExtrasSelected.map(componentExtra => {
+      priceExtras = priceExtras + (componentExtra.amount * 1.99);
+    });
+
+    let value: string = pedido.initialPrice!.split(" ")[1];
+    let numberValue: number = Number(value.replace(",", "."));
+    let totalPrice: string = (numberValue + priceExtras).toFixed(2);
+    totalPrice = totalPrice.replace(".", ",");
+
+    return `R$ ${ totalPrice }`;
   }
 
   useEffect(() => {
@@ -217,7 +237,8 @@ export function MontarPedido(): ReactElement {
   }, []);
 
   useEffect(() => {
-    setAllAcaiComponentsSelected([]);
+    setAllAcaiComplementosSelected([]);
+    setAllAcaiExtrasSelected([]);
 
     if(Object.values(allComponents).every(index => index.length > 0)) {
       const category = url.search.split("?")[1] as "cremes" || "complementos" || "coberturas" || "extras";
@@ -240,6 +261,24 @@ export function MontarPedido(): ReactElement {
     handleClearButtons();
 
   }, [ propsMontarAcai.category ]);
+
+  useEffect(() => {
+    savePedido();
+
+  }, [ propsMontarAcai.componentSelected, allAcaiComplementosSelected, allAcaiExtrasSelected ]);
+
+  useEffect(() => {
+    if(propsMontarAcai.componentSelected) {
+      const acaiExtrasFiltered = allAcaiExtrasSelected.filter(index => index.name != propsMontarAcai.componentSelected );
+      setAllAcaiExtrasSelected([...acaiExtrasFiltered, { name: propsMontarAcai.componentSelected, amount: count } ]);
+    }
+
+  }, [ count ]);
+
+  useEffect(() => {
+    setCount(1);
+
+  }, [ propsMontarAcai.componentSelected ]);
 
   return (
     <Container>
@@ -294,7 +333,7 @@ export function MontarPedido(): ReactElement {
 
           <div>
             {
-              pedido.name != undefined &&
+              pedido.name &&
               <>
                 <p>
                   <span><strong>{ pedido.name }</strong></span>
@@ -319,9 +358,9 @@ export function MontarPedido(): ReactElement {
                 }
 
                 {
-                  propsMontarAcai.category == "complementos" && allAcaiComponentsSelected.length > 0 ? 
+                  propsMontarAcai.category == "complementos" && allAcaiComplementosSelected.length > 0 ? 
                   <p>
-                    <span>Complementos: <strong>{ `${allAcaiComponentsSelected[0]}...` }</strong> </span>
+                    <span>Complementos: <strong>{ `${allAcaiComplementosSelected[0]}...` }</strong> </span>
                   </p>
                   : pedido.acaiComponents && pedido.acaiComponents.complementos &&
                   <p>
@@ -331,7 +370,7 @@ export function MontarPedido(): ReactElement {
 
                 <p>
                   <span></span>
-                  <span><strong>Total:</strong>{ pedido.initialPrice }</span>
+                  <span><strong>Total:</strong>{ pedido.totalPrice }</span>
                 </p>
               </>
             }
