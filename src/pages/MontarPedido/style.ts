@@ -55,7 +55,7 @@ export const Container = styled.div`
     }
   }
 
-  > :last-child {
+  .divDisplay {
     background-color: ${({ theme }) => theme.COLORS.WHITE};
     width: 100%;
     padding: 3rem;

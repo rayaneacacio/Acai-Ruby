@@ -43,7 +43,7 @@ interface IComponentsPedido {
   creme: string | undefined,
   complementos: string[] | undefined,
   cobertura: string | undefined,
-  extras: string[] | undefined
+  extras: { name:string, amount: number }[] | undefined
 }
 
 export const PedidoContext = createContext<IPedidoContext>(initialValue);

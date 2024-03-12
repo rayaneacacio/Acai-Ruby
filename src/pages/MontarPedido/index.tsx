@@ -16,6 +16,7 @@ import { Container, Ingredients } from "./style";
 import { usePedido } from "../../hook/pedido";
 import { useAcaiComponents } from "../../hook/acaiComponents";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Recibo } from "../../components/Recibo";
 
 export function MontarPedido(): ReactElement {
   const { pedido, insertPedido, cancelPedido } = usePedido();
@@ -44,21 +45,15 @@ export function MontarPedido(): ReactElement {
   function handleNextNavigation(): void {
     switch(propsMontarAcai.category) {
       case "cremes":
-        if(propsMontarAcai.componentSelected != undefined) {
-          navigate(`/pedido?complementos`);
-        }
+        navigate(`/pedido?complementos`);
         break;
 
       case "complementos":
-        if(allAcaiComplementosSelected.length > 0) {
-          navigate(`/pedido?coberturas`);
-        }
+        navigate(`/pedido?coberturas`);
         break;
 
       case "coberturas":
-        if(propsMontarAcai.componentSelected != undefined) {
-          navigate(`/pedido?extras`);
-        }
+        navigate(`/pedido?extras`);
         break;
 
       case "extras":
@@ -226,6 +221,10 @@ export function MontarPedido(): ReactElement {
     return `R$ ${ totalPrice }`;
   }
 
+  function handleOpenModalRecibo(): void {
+    (document.querySelector(".modalRecibo")! as HTMLDialogElement).style.display = "block";
+  }
+
   useEffect(() => {
     const controller = new AbortController();
     (async() => await findAcaiComponents(controller.signal))();
@@ -312,7 +311,7 @@ export function MontarPedido(): ReactElement {
         </Ingredients>
       }
 
-      <div>
+      <div className="divDisplay">
         <div className="pedido">
           <SvgCheckMark />
           {
@@ -326,7 +325,7 @@ export function MontarPedido(): ReactElement {
         </div>
 
         <div className="recibo">
-          <button>
+          <button onClick={ handleOpenModalRecibo }>
             <p>VISUALIZAR</p>
             <SvgView />
           </button>
@@ -360,11 +359,19 @@ export function MontarPedido(): ReactElement {
                 {
                   propsMontarAcai.category == "complementos" && allAcaiComplementosSelected.length > 0 ? 
                   <p>
-                    <span>Complementos: <strong>{ `${allAcaiComplementosSelected[0]}...` }</strong> </span>
+                    <span>Complementos: <strong>{ 
+                      allAcaiComplementosSelected.length > 1 ? 
+                      `${allAcaiComplementosSelected[0]}...` 
+                      : allAcaiComplementosSelected[0]
+                      }</strong> </span>
                   </p>
-                  : pedido.acaiComponents && pedido.acaiComponents.complementos &&
+                  : pedido.acaiComponents && pedido.acaiComponents.complementos && pedido.acaiComponents.complementos.length > 0 &&
                   <p>
-                    <span>Complementos: <strong>{ `${pedido.acaiComponents.complementos[0]}...` }</strong> </span>
+                    <span>Complementos: <strong>{ 
+                        pedido.acaiComponents.complementos.length > 1 ? 
+                        `${pedido.acaiComponents.complementos[0]}...` 
+                        : pedido.acaiComponents.complementos[0] 
+                      }</strong> </span>
                   </p>
                 }
 
@@ -394,6 +401,8 @@ export function MontarPedido(): ReactElement {
           </div>
         </div>
       </div>
+
+      <Recibo />
     </Container>
   )
 }
