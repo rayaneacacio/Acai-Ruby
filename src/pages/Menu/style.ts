@@ -6,7 +6,6 @@ export const Container = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15rem;
   animation: animateOpacity 1s forwards ease;
 
   header {
@@ -52,11 +51,12 @@ export const Container = styled.div`
     position: absolute;
     top: 24rem;
     left: 2rem;
+    z-index: 1;
   }
 
   main {
     background: ${({ theme }) => theme.COLORS.WHITE};
-    height: 100%;
+    height: 100vmax;
     padding-bottom: 10rem;
     display: flex;
     align-items: center;
@@ -72,6 +72,7 @@ export const Container = styled.div`
       animation: animateToRight 0.5s forwards;
       text-transform: uppercase;
       padding-top: 1rem;
+      margin-top: 15rem;
 
       div {
         background-size: contain;

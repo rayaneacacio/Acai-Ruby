@@ -203,7 +203,7 @@ export const Container = styled.div`
 
   .divIsLoading {
     font-size: 2rem;
-    height: 40%;
+    height: 40rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -212,7 +212,7 @@ export const Container = styled.div`
 
 export const Ingredients = styled.div`
   width: 100%;
-  height: 40%;
+  height: 40rem;
   padding: 5rem 8%;
   display: flex;
   align-items: center;
