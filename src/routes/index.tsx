@@ -5,6 +5,7 @@ import { ServiceOptions } from "../pages/ServiceOptions";
 import { PaymentOptions } from "../pages/PaymentOptions";
 import { Menu } from "../pages/Menu";
 import { MontarPedido } from "../pages/MontarPedido";
+import { NotFound404 } from "../pages/NotFound404";
 
 export function AcaiPlusRoutes() {
   return (
@@ -15,6 +16,7 @@ export function AcaiPlusRoutes() {
         <Route path="/payment" element={ <PaymentOptions /> } />
         <Route path="/menu" element={ <Menu /> } />
         <Route path="/pedido?" element={ <MontarPedido /> } />
+        <Route path="/*" element={ <NotFound404 /> } />
       </Routes>
     </BrowserRouter>
   )
