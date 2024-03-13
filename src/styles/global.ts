@@ -23,6 +23,7 @@ export default createGlobalStyle`
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     font-size: 1.8rem;
     overflow-x: hidden;
+    height: -webkit-fill-available;
 
     &::-webkit-scrollbar {
       background: ${({ theme }) => theme.COLORS.PURPLE};;

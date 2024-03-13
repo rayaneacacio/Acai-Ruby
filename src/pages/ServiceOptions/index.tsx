@@ -24,8 +24,8 @@ export function ServiceOptions(): ReactElement {
       <h1>ESCOLHA UMA DAS OPÇÕES ABAIXO ;)</h1>
 
       <div>
-        <Button icon={ SvgFood() } text="PARA COMER AQUI" onClick={() => handleNavigatePaymentOptions("comer aqui") } />
-        <Button icon={ SvgBox() } text="PARA LEVAR" onClick={() => handleNavigatePaymentOptions("levar") } />
+        <Button icon={ SvgFood() } text="PARA COMER AQUI" onClick={() => handleNavigatePaymentOptions("para comer aqui") } />
+        <Button icon={ SvgBox() } text="PARA LEVAR" onClick={() => handleNavigatePaymentOptions("para levar") } />
       </div>
 
       <ButtonBack />

@@ -23,14 +23,14 @@ export function Home(): ReactElement {
           </div>
 
           <div className="divImgs">
-            <img src={ pngAcai1 } alt="" />
+            <div className="imgAcai" style={{ backgroundImage: `url(${ pngAcai1 })` }} />
             
             <div>
               <p>50%</p>
               <p> DE DESCONTO EM TODA LINHA</p>
             </div>
             
-            <img src={ pngAcai2 } alt="" />
+            <div className="imgAcai" style={{ backgroundImage: `url(${ pngAcai2 })` }} />
           </div>
         </div>
       </main>

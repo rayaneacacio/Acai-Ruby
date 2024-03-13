@@ -33,7 +33,7 @@ export function Recibo(): ReactElement {
 
           <p>
             <span>Tamanho: <strong>{ pedido.size }</strong></span>
-            <span><strong>Subtotal:</strong>{ pedido.initialPrice }</span>
+            <span><strong>Subtotal: </strong>{ pedido.initialPrice }</span>
           </p>
 
           {
@@ -82,7 +82,7 @@ export function Recibo(): ReactElement {
 
           <p>
             <span></span>
-            <span><strong>Total:</strong>{ pedido.totalPrice }</span>
+            <span><strong>Total: </strong>{ pedido.totalPrice }</span>
           </p> 
       </div>
       }

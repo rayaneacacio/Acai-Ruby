@@ -22,10 +22,18 @@ export const Container = styled.div`
       position: relative;
       animation: animateOpacity 1s forwards ease;
     }
+  }
 
-    .divImgs {
-      display: flex;
-    }
+  .divImgs {
+    display: flex;
+  }
+
+  .imgAcai {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 40rem;
+    height: 40rem;
   }
 
   h1 {
@@ -53,11 +61,6 @@ export const Container = styled.div`
     font-weight: 600;
     letter-spacing: 4px;
     padding: 0 2.5rem;
-  }
-
-  main img {
-    width: 40rem;
-    height: 40rem;
   }
 
   button {

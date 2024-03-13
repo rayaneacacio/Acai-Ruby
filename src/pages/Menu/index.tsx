@@ -43,7 +43,7 @@ export function Menu(): ReactElement {
   return (
     <Container>
       <header>
-        <img src={ cremesBanner } alt="" />
+        <div style={{ backgroundImage: `url(${cremesBanner})` }}></div>
         <div style={{ backgroundImage: `url(${acaiBanner})` }}></div>
         <p>COMPRE AQUI!</p>
       </header>

@@ -8,10 +8,15 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10rem;
+
+  > h1 {
+    height: 10%;
+    padding: 5rem 0 6rem;
+  }
 
   > div {
     width: 100%;
+    height: 55%;
     display: flex;
     justify-content: space-evenly;
   }

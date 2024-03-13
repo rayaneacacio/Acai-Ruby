@@ -27,8 +27,9 @@ export const Container = styled.div`
       height: 27rem;
     }
 
-    img:first-of-type {
+    > div:first-of-type {
       width: 40rem;
+      height: 17rem;
       position: absolute;
       bottom: 1rem;
       left: -10rem;
