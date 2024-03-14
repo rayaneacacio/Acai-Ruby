@@ -18,7 +18,7 @@ export function Home(): ReactElement {
       <main>
         <div>
           <div>
-            <h1>AÇAÍ PLUS</h1>
+            <h1>AÇAÍ RUBY</h1>
             <h2>SUPER PROMOÇÃO</h2>
           </div>
 

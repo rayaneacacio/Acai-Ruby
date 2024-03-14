@@ -42,7 +42,7 @@ export default createGlobalStyle`
   }
 
   h2 {
-    color: ${({ theme }) => theme.COLORS.YELLOW};
+    color: ${({ theme }) => theme.COLORS.GREEN};
   }
 
   button {

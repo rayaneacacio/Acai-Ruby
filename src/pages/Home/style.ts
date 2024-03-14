@@ -56,9 +56,10 @@ export const Container = styled.div`
   }
 
   p:last-of-type {
-    background-color: ${({ theme }) => theme.COLORS.YELLOW};
+    background-color: ${({ theme }) => theme.COLORS.GREEN};
     color: ${({ theme }) => theme.COLORS.PURPLE};
     font-weight: 600;
+    text-align: center;
     letter-spacing: 4px;
     padding: 0 2.5rem;
   }

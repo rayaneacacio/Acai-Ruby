@@ -48,7 +48,7 @@ export const Container = styled.div`
   }
 
   > img {
-    width: 8rem;
+    width: 11rem;
     position: absolute;
     top: 24rem;
     left: 2rem;

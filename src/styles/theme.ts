@@ -1,7 +1,8 @@
 export default {
   COLORS: {
-    WHITE: "#fff",
+    WHITE: "#EDEDED",
     YELLOW: "#fff91d",
+    GREEN: "#5fd335",
     PURPLE: "#550155",
     PURPLE_22: "#7f1d7e",
     BACKGROUND_GRADIENT: "radial-gradient(circle, rgba(138,34,137,1) 0%, rgba(74,15,79,1) 70%)",
