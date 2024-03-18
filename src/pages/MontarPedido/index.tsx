@@ -397,7 +397,12 @@ export function MontarPedido(): ReactElement {
 
           <div className="divButtonsBackAndNext">
             <ButtonBack onClick={ handleBackNavigation } />
-            <ButtonNext onClick={ handleNextNavigation }/>
+            {
+              url.search == "?extras" ?
+              <button className="buttonPedir">FAZER PEDIDO</button>
+              :
+              <ButtonNext onClick={ handleNextNavigation }/>
+            }
           </div>
         </div>
       </div>

@@ -208,6 +208,16 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
   }
+
+  .buttonPedir {
+    background-color: ${({ theme }) => theme.COLORS.PURPLE};
+    color: ${({ theme }) => theme.COLORS.WHITE};
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 0.5rem 1.5rem;
+    border-radius: 10rem;
+    box-shadow: ${({ theme }) => theme.COLORS.SHADOW_SUAVE};
+  }
 `;
 
 export const Ingredients = styled.div`
