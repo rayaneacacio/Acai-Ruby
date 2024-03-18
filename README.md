@@ -1,7 +1,7 @@
 //logo
 
 
-Totem de autoatendimento para açaiteria. Esse projeto otimiza a experiência do cliente em açaiterias oferecendo uma montagem simples e rápida de açaí. Foi desenvolvido com TypeScript, React JS e Styled Components, consome [sua própria api](https://github.com/rayaneacacio/api-acai-ruby) e possui um [site de administração](https://github.com/rayaneacacio/acai-ruby-adm) para facilitar a gestão do dono.
+Totem de autoatendimento para açaiteria. Esse projeto otimiza a experiência do cliente em açaiterias oferecendo uma montagem simples e rápida de açaí. Foi desenvolvido com TypeScript, React JS e Styled Components, consome [sua própria api](https://github.com/rayaneacacio/api-acai-ruby) e possui um [site de administração](https://github.com/rayaneacacio/Acai-Ruby-Administracao) para facilitar a gestão do dono.
 
 > Acesso: [acai-ruby.netlify.app](https://acai-ruby.netlify.app/)
 
