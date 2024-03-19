@@ -9,13 +9,13 @@ Totem de autoatendimento para açaiteria. Esse projeto otimiza a experiência do
 <br>
 
 <p align="center">
-  <img height="450px" src=".github/montagemDeAcai.gif" />  
+  <img height="400px" src=".github/GIF2.gif" />  
 </p>
 
 <br>
 
 <p align="center">
-  <img height="450px" src=".github/navegacao.gif" />  
+  <img height="400px" src=".github/GIF1.gif" />  
 </p>
 
 ##
