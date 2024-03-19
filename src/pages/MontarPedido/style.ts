@@ -236,7 +236,7 @@ export const Ingredients = styled.div`
     font-size: 2.5rem;
     font-weight: 700;
     text-transform: uppercase;
-    width: 30rem;
+    min-width: 30rem;
     height: 5rem;
     padding: 1rem;
     border-radius: 1.5rem;
