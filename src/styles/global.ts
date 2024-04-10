@@ -18,7 +18,7 @@ export default createGlobalStyle`
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     font-size: 1.8rem;
     overflow: hidden;
-    height: -webkit-fill-available;
+    /* height: -webkit-fill-available; */
 
     > div {
       overflow-y: auto;
@@ -26,6 +26,7 @@ export default createGlobalStyle`
 
       &::-webkit-scrollbar {
         display: none;
+        width: 0;
       }
     }
   }
@@ -48,15 +49,13 @@ export default createGlobalStyle`
     cursor: pointer;
     transition: 0.3s;
     outline: ${({ theme }) => theme.COLORS.WHITE};
-  }
-
-  button:hover {
-    filter: brightness(0.7);
+    -webkit-tap-highlight-color: transparent;
   }
 
   @media(min-width: 1000px) {
     body > div {
-        &::-webkit-scrollbar {
+      &::-webkit-scrollbar {
+        display: block;
         background: ${({ theme }) => theme.COLORS.PURPLE};
         width: 5px;
       }
@@ -65,6 +64,10 @@ export default createGlobalStyle`
         background: ${({ theme }) => theme.COLORS.PURPLE_22};
         border-radius: 2px;
       }
+    }
+
+    button:hover {
+      filter: brightness(0.7);
     }
   }
 

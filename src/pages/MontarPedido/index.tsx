@@ -12,7 +12,7 @@ import { SvgPlus } from "../../assets/svgs/plus";
 import { ButtonBack } from "../../components/ButtonBack";
 import { ButtonNext } from "../../components/ButtonNext";
 
-import { Container, Ingredients } from "./style";
+import { Container, Svgs, Ingredients, Display, ViewRecibo } from "./style";
 import { usePedido } from "../../hook/pedido";
 import { useAcaiComponents } from "../../hook/acaiComponents";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -289,12 +289,12 @@ export function MontarPedido(): ReactElement {
         </div>
       </div>
 
-      <div className="divSvgs">
+      <Svgs className="divSvgs">
         <div className="svg_cremes"><SvgCremes /></div>
         <div className="svg_complementos"><SvgComplementos /></div>
         <div className="svg_coberturas"><SvgCoberturas /></div>
         <div className="svg_extras"><SvgExtras /></div>
-      </div>
+      </Svgs>
 
       {
         isLoading ?
@@ -311,7 +311,7 @@ export function MontarPedido(): ReactElement {
         </Ingredients>
       }
 
-      <div className="divDisplay">
+      <Display className="divDisplay">
         <div className="pedido">
           <SvgCheckMark />
           {
@@ -324,7 +324,7 @@ export function MontarPedido(): ReactElement {
           }
         </div>
 
-        <div className="recibo">
+        <ViewRecibo>
           <button onClick={ handleOpenModalRecibo }>
             <p>VISUALIZAR</p>
             <SvgView />
@@ -382,7 +382,7 @@ export function MontarPedido(): ReactElement {
               </>
             }
           </div>
-        </div>
+        </ViewRecibo>
 
         <div>
           <div>
@@ -405,7 +405,7 @@ export function MontarPedido(): ReactElement {
             }
           </div>
         </div>
-      </div>
+      </Display>
 
       <Recibo />
     </Container>
