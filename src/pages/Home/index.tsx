@@ -1,41 +1,63 @@
-import { ReactElement } from "react";
-import { useNavigate } from "react-router-dom";
+import { ReactElement, useState } from "react";
 
-import pngAcai1 from "../../assets/acai1.png";
-import pngAcai2 from "../../assets/acai2.png";
+import pngAcaiPremium from "../../assets/acai_premium.png";
+import pngAcaiTradicional from "../../assets/acai_tradicional.png";
 
-import { Container } from "./style";
+import { Modal } from "../../components/Modal";
+
+import { AcaiBanner, Container, ImgCremes, Logo } from "./style";
+import { usePedido } from "../../hook/pedido";
+
+interface IProduct {
+  name: string,
+  image: string,
+}
 
 export function Home(): ReactElement {
-  const navigate = useNavigate();
+  const { insertPedido } = usePedido();
+  const contentAcai: IProduct[] = [
+    {
+      name: "AÇAÍ PREMIUM",
+      image: pngAcaiPremium,
+    },
+    {
+      name: "AÇAÍ TRADICIONAL",
+      image: pngAcaiTradicional,
+    }
+  ];
 
-  function handleNavigateServiceOptions() {
-    navigate("/services");
+  const [ imgPedido, setImgPedido ] = useState<string>("");
+
+  function handlePedido(product: IProduct): void {
+    const dialog: HTMLDialogElement = document.querySelector(".dialogPedido")!;
+    dialog.style.display = "block";
+
+    setImgPedido(product.image);
+    insertPedido({ name: product.name, image: product.image });
   }
 
   return (
     <Container>
-      <main>
-        <div>
-          <div>
-            <h1>AÇAÍ RUBY</h1>
-            <h2>SUPER PROMOÇÃO</h2>
-          </div>
+      <header>
+        <ImgCremes />
+        <AcaiBanner />
+        <p>COMPRE AQUI!</p>
+        <Logo />
+      </header>
 
-          <div className="divImgs">
-            <div className="imgAcai" style={{ backgroundImage: `url(${ pngAcai1 })` }} />
-            
-            <div>
-              <p>50%</p>
-              <p> DE DESCONTO EM TODA LINHA</p>
-            </div>
-            
-            <div className="imgAcai" style={{ backgroundImage: `url(${ pngAcai2 })` }} />
-          </div>
-        </div>
+      <main>
+        {
+          contentAcai &&
+          contentAcai.map((product: IProduct, index: number) => (
+            <button key={ index } onClick={() => handlePedido(product)}>
+              <div style={{ backgroundImage: `url(${product.image})` }}></div>
+              <p>{ product.name }</p>
+            </button>
+          ))
+        }
       </main>
 
-      <button onClick={ handleNavigateServiceOptions }>TOQUE PARA INICIAR</button>
+      <Modal image={ imgPedido } />
     </Container>
   )
 }
