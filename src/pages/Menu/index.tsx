@@ -1,15 +1,11 @@
 import { ReactElement, useState } from "react";
 
-import cremesBanner from "../../assets/cremesBanner.png"
-import acaiBanner from "../../assets/acaiBanner.png";
-import imgLogo from "../../assets/logo.png";
 import pngAcaiPremium from "../../assets/acai_premium.png";
 import pngAcaiTradicional from "../../assets/acai_tradicional.png";
 
-import { ButtonBack } from "../../components/ButtonBack";
 import { Modal } from "../../components/Modal";
 
-import { Container } from "./style";
+import { AcaiBanner, Container, ImgCremes, Logo } from "./style";
 import { usePedido } from "../../hook/pedido";
 
 interface IProduct {
@@ -43,25 +39,22 @@ export function Menu(): ReactElement {
   return (
     <Container>
       <header>
-        <div style={{ backgroundImage: `url(${cremesBanner})` }}></div>
-        <div style={{ backgroundImage: `url(${acaiBanner})` }}></div>
+        <ImgCremes />
+        <AcaiBanner />
         <p>COMPRE AQUI!</p>
+        <Logo />
       </header>
-
-      <img src={ imgLogo } alt="" />
 
       <main>
         {
           contentAcai &&
           contentAcai.map((product: IProduct, index: number) => (
-            <button key={ index } className="buttonMain" onClick={() => handlePedido(product)}>
+            <button key={ index } onClick={() => handlePedido(product)}>
               <div style={{ backgroundImage: `url(${product.image})` }}></div>
               <p>{ product.name }</p>
             </button>
           ))
         }
-
-        <ButtonBack />
       </main>
 
       <Modal image={ imgPedido } />

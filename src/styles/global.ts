@@ -12,27 +12,21 @@ export default createGlobalStyle`
     font-size: 62.5%;
   }
 
-  #root {
-    width: 100vw;
-    height: 100vh;
-  }
-
   body {
     background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
     color: ${({ theme }) => theme.COLORS.WHITE};
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     font-size: 1.8rem;
-    overflow-x: hidden;
+    overflow: hidden;
     height: -webkit-fill-available;
 
-    &::-webkit-scrollbar {
-      background: ${({ theme }) => theme.COLORS.PURPLE};;
-      width: 5px;
-    }
+    > div {
+      overflow-y: auto;
+      scroll-behavior: smooth;
 
-    &::-webkit-scrollbar-thumb {
-      background: ${({ theme }) => theme.COLORS.PURPLE_22};
-      border-radius: 2px;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 
@@ -60,14 +54,18 @@ export default createGlobalStyle`
     filter: brightness(0.7);
   }
 
-  dialog {
-    background: rgba(8, 8, 8, 0.64);
-    color: ${({ theme }) => theme.COLORS.PURPLE};
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    inset: 0;
-    z-index: 1;
+  @media(min-width: 1000px) {
+    body > div {
+        &::-webkit-scrollbar {
+        background: ${({ theme }) => theme.COLORS.PURPLE};
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: ${({ theme }) => theme.COLORS.PURPLE_22};
+        border-radius: 2px;
+      }
+    }
   }
 
   @keyframes animateToTop {
