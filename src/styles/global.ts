@@ -13,7 +13,7 @@ export default createGlobalStyle`
   }
   
   body {
-    background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
+    background: transparent;
     color: ${({ theme }) => theme.COLORS.WHITE};
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     font-size: 1.8rem;
