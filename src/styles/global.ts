@@ -13,7 +13,7 @@ export default createGlobalStyle`
   }
   
   body {
-    background: transparent;
+    background: ${({ theme }) => theme.COLORS.WHITE};
     color: ${({ theme }) => theme.COLORS.WHITE};
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     font-size: 1.8rem;
@@ -32,6 +32,10 @@ export default createGlobalStyle`
         width: 0;
       }
     }
+  }
+
+  body.colorPurple {
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
   }
 
   h1, h2 {
