@@ -12,7 +12,7 @@ export const Container = styled.button`
     align-items: center;
     justify-content: center;
 
-    box-shadow: ${({ theme }) => theme.COLORS.SHADOW};
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 
   svg {

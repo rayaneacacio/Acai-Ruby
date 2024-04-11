@@ -150,7 +150,7 @@ export const Ingredients = styled.div`
 export const Display = styled.div`
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   width: 100%;
-  padding: 3rem;
+  padding: 2rem;
   display: grid;
   grid-template-areas: "buttons buttons" "recibo recibo";
   justify-content: center;
@@ -175,6 +175,7 @@ export const Display = styled.div`
   }
 
   @media(min-width: 700px) {
+    padding: 3rem;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -282,7 +283,7 @@ export const ButtonsDisplay = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 5rem;
+  gap: 3rem;
   grid-area: buttons;
 
   > :first-child {
@@ -319,6 +320,8 @@ export const ButtonsDisplay = styled.div`
   }
 
   @media(min-width: 700px) {
+    gap: 5rem;
+
     > :first-child {
       text-align: center;
     }
