@@ -1,14 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.dialog`
-  background: rgba(8, 8, 8, 0.64);
-  color: ${({ theme }) => theme.COLORS.PURPLE};
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-
   > div {
     background-color: ${({ theme }) => theme.COLORS.WHITE};
     font-size: 2rem;

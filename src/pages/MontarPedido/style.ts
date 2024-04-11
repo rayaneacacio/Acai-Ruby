@@ -11,7 +11,7 @@ export const Container = styled.div`
   gap: 5rem;
   animation: animateOpacity 1s forwards ease;
 
-  > :first-child {
+  .titles {
     padding: 3rem 2rem;
     text-align: center;
 
@@ -59,12 +59,13 @@ export const Container = styled.div`
   }
 
   @media(min-width: 1000px) {
-    > :first-child {
+    .titles {
       width: 100%;
-      height: 20%;
+      height: 12rem;
       display: flex;
-      justify-content: space-between;
-      padding: 5rem 15rem 0;
+      align-items: end;
+      justify-content: space-around;
+      padding: 1rem 0 0;
       text-align: center;
 
       > h1 {
@@ -100,18 +101,14 @@ export const Svgs = styled.div`
     padding: 7px;
   }
 
-  @media(min-width: 500px) {
-    /* width: 50%; */
-  }
-
-  @media(min-width: 1000px) {
-    width: 35%;
+  @media(min-width: 420px) {
+    width: 38rem;
   }
 `;
 
 export const Ingredients = styled.div`
   width: 100%;
-  padding: 5rem 2rem;
+  padding: 3rem 2rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,9 +121,9 @@ export const Ingredients = styled.div`
     font-size: 2rem;
     font-weight: 700;
     text-transform: uppercase;
-    min-width: 20rem;
+    min-width: 15rem;
     height: 5rem;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     border-radius: 1.5rem;
     box-shadow: 0px 0px 1px 1.3px ${({ theme }) => theme.COLORS.WHITE};
 
@@ -141,7 +138,7 @@ export const Ingredients = styled.div`
   }
 
   @media(min-width: 1000px) {
-    padding: 5rem 8%;
+    padding: 2rem 8% 0;
 
     button {
       font-size: 2.5rem;
@@ -159,47 +156,8 @@ export const Display = styled.div`
   justify-content: center;
   gap: 3rem;
 
-  > :last-child {
-    color: ${({ theme }) => theme.COLORS.PURPLE};
-    font-weight: 700;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 5rem;
-    grid-area: buttons;
-
-    > :first-child {
-      width: 100%;
-      text-align: end;
-    }
-  }
-
   .pedido {
     display: none;
-  }
-
-  .divButtonsCount {
-    font-size: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 2rem;
-    margin-bottom: 5px;
-
-    span {
-      width: 2rem;
-    }
-
-    button {
-      background-color: ${({ theme }) => theme.COLORS.PURPLE};
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
   }
 
   .buttonBack {
@@ -216,30 +174,11 @@ export const Display = styled.div`
     }
   }
 
-  .divButtonsBackAndNext {
-    display: flex;
-    gap: 2rem;
-  }
-
   @media(min-width: 700px) {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: 1rem;
-
-    > :last-child > :first-child {
-      text-align: center;
-    }
-
-    .divButtonsCount {
-      justify-content: center;
-    }
-  }
-
-  @media(min-width: 1000px) {
-    > :last-child {
-      align-items: center;
-    }
   }
 
   @media(min-width: 1200px) {
@@ -318,7 +257,7 @@ export const ViewRecibo = styled.div`
     }
   }
 
-  @media(min-width: 1000px) {
+  @media(min-width: 1100px) {
     height: 100%;
 
     button {
@@ -333,5 +272,63 @@ export const ViewRecibo = styled.div`
     > div p {
       padding: 2px 2rem 0;
     }
+  }
+`;
+
+export const ButtonsDisplay = styled.div`
+  color: ${({ theme }) => theme.COLORS.PURPLE};
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5rem;
+  grid-area: buttons;
+
+  > :first-child {
+    width: 100%;
+    text-align: end;
+  }
+
+  > :last-child {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .buttonsCount {
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+    margin-bottom: 5px;
+
+    span {
+      width: 2rem;
+    }
+
+    button  {
+      background-color: ${({ theme }) => theme.COLORS.PURPLE};
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media(min-width: 700px) {
+    > :first-child {
+      text-align: center;
+    }
+
+    .buttonsCount {
+      justify-content: center;
+    }
+  }
+
+  @media(min-width: 1000px) {
+    align-items: center;
   }
 `;

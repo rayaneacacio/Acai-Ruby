@@ -17,19 +17,8 @@ export function Recibo(): ReactElement {
           <button onClick={ handleCloseModalRecibo }>FECHAR</button>
           
           <p>
-            <span><strong>{ pedido.name }</strong></span>
-            <span><strong>{ pedido.size }</strong></span>
+            <span><strong>{ pedido.name } { pedido.size } </strong></span>
           </p>
-
-          <p>
-            <span>Consumo:</span>
-            <span>{ pedido.servico }</span>
-          </p> 
-
-          <p>
-            <span>Forma de pagamento:</span>
-            <span>{ pedido.pagamento }</span>
-          </p> 
 
           <p>
             <span>Tamanho: <strong>{ pedido.size }</strong></span>

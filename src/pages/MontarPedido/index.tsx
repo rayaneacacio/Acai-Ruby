@@ -12,7 +12,7 @@ import { SvgPlus } from "../../assets/svgs/plus";
 import { ButtonBack } from "../../components/ButtonBack";
 import { ButtonNext } from "../../components/ButtonNext";
 
-import { Container, Svgs, Ingredients, Display, ViewRecibo } from "./style";
+import { Container, Svgs, Ingredients, Display, ViewRecibo, ButtonsDisplay } from "./style";
 import { usePedido } from "../../hook/pedido";
 import { useAcaiComponents } from "../../hook/acaiComponents";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -57,6 +57,7 @@ export function MontarPedido(): ReactElement {
         break;
 
       case "extras":
+        navigate("/services");
         break;
     }
   }
@@ -281,7 +282,7 @@ export function MontarPedido(): ReactElement {
 
   return (
     <Container>
-      <div>
+      <div className="titles">
         <h1>ESCOLHA SEUS <strong>COMPONENTES</strong></h1>
         <div>
           <h1>{ propsMontarAcai.category }</h1>
@@ -384,9 +385,9 @@ export function MontarPedido(): ReactElement {
           </div>
         </ViewRecibo>
 
-        <div>
+        <ButtonsDisplay>
           <div>
-            <div className="divButtonsCount">
+            <div className="buttonsCount">
               <button onClick={() => setCount(count == 1 ? count : count-1) } ><SvgMinus /></button>
               <span>{ count }</span>
               <button onClick={() => setCount(count+1) }><SvgPlus /></button>
@@ -395,16 +396,11 @@ export function MontarPedido(): ReactElement {
             <p style={{ height: "1rem" }}>{ propsMontarAcai.componentSelected }</p>
           </div>
 
-          <div className="divButtonsBackAndNext">
+          <div>
             <ButtonBack onClick={ handleBackNavigation } />
-            {
-              url.search == "?extras" ?
-              <button className="buttonPedir">FAZER PEDIDO</button>
-              :
-              <ButtonNext onClick={ handleNextNavigation }/>
-            }
+            <ButtonNext onClick={ handleNextNavigation }/>
           </div>
-        </div>
+        </ButtonsDisplay>
       </Display>
 
       <Recibo />

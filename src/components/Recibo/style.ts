@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.dialog`
-  color: ${({ theme }) => theme.COLORS.PURPLE};
   font-size: 1.6rem;
   font-weight: 500;
 
   > div {
     background: ${({ theme }) => theme.COLORS.WHITE};
-    width: 40rem;
-    height: 70%;
+    width: 90%;
+    height: 90%;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -22,9 +21,10 @@ export const Container = styled.dialog`
   }
 
   p {
-    padding: 5px 2rem 0;
+    padding: 5px 0 0;
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
   }
 
   p:first-of-type {
@@ -49,5 +49,13 @@ export const Container = styled.dialog`
     position: absolute;
     top: 1rem;
     right: 0;
+  }
+
+  @media(min-width: 500px) {
+    > div {
+      width: 45rem;
+      height: 80%;
+      padding: 5rem 2rem 0; 
+    }
   }
 `;

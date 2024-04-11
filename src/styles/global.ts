@@ -18,7 +18,6 @@ export default createGlobalStyle`
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     font-size: 1.8rem;
     overflow: hidden;
-    /* height: -webkit-fill-available; */
 
     > div {
       overflow-y: auto;
@@ -26,7 +25,7 @@ export default createGlobalStyle`
 
       &::-webkit-scrollbar {
         display: none;
-        width: 0;
+        /* width: 0; */
       }
     }
   }
@@ -52,17 +51,28 @@ export default createGlobalStyle`
     -webkit-tap-highlight-color: transparent;
   }
 
+  dialog {
+    background: rgba(8, 8, 8, 0.64);
+    color: ${({ theme }) => theme.COLORS.PURPLE};
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+  }
+
   @media(min-width: 1000px) {
     body > div {
       &::-webkit-scrollbar {
         display: block;
-        background: ${({ theme }) => theme.COLORS.PURPLE};
-        width: 5px;
+        background: #888; 
+        width: 10px;
       }
 
       &::-webkit-scrollbar-thumb {
-        background: ${({ theme }) => theme.COLORS.PURPLE_22};
-        border-radius: 2px;
+        background: ${({ theme }) => theme.COLORS.WHITE};
+        border-radius: 10px;
+        border: 2px solid #888;
       }
     }
 
