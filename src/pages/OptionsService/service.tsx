@@ -29,9 +29,7 @@ export function ServiceOptions(): ReactElement {
           <Button icon={ SvgBox() } text="PARA LEVAR" onClick={() => handleNavigatePaymentOptions("para levar") } />
         </div>
 
-        <div>
-          <ButtonBack />
-        </div>
+        <ButtonBack />
       </main>      
     </Container>
   )

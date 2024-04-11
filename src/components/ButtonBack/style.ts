@@ -13,6 +13,7 @@ export const Container = styled.button`
   gap: 1rem;
 
   position: absolute;
+  bottom: 5rem;
   right: 2rem;
 
   p {
@@ -21,7 +22,6 @@ export const Container = styled.button`
   }
 
   @media(min-width: 1000px) {
-    bottom: 5rem;
     right: 10rem;
   }
 `;

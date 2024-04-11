@@ -31,10 +31,6 @@ export default createGlobalStyle`
     }
   }
 
-  .colorPurple {
-    background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
-  }
-
   h1, h2 {
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     font-size: 2.5rem;

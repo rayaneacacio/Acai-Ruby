@@ -29,9 +29,7 @@ export function PaymentOptions(): ReactElement {
           <Button icon={ SvgMoney() } text="DINHEIRO" onClick={() => handleNavigateMenu("dinheiro") } />
         </div>
 
-        <div>
-          <ButtonBack />
-        </div>
+        <ButtonBack />
       </main>
     </Container>
   )
