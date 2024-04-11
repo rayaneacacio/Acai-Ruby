@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Home } from "../pages/Home";
-import { ServiceOptions } from "../pages/ServiceOptions";
-import { PaymentOptions } from "../pages/PaymentOptions";
+import { ServiceOptions } from "../pages/OptionsService/service";
+import { PaymentOptions } from "../pages/OptionsService/payment";
 import { MontarPedido } from "../pages/MontarPedido";
 import { NotFound404 } from "../pages/NotFound404";
 

@@ -13,11 +13,15 @@ export const Container = styled.button`
   gap: 1rem;
 
   position: absolute;
-  bottom: 5rem;
-  right: 10rem;
+  right: 2rem;
 
   p {
     font-size: 1.6rem;
     font-weight: 500;
+  }
+
+  @media(min-width: 1000px) {
+    bottom: 5rem;
+    right: 10rem;
   }
 `;

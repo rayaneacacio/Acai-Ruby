@@ -25,14 +25,14 @@ export default createGlobalStyle`
 
       &::-webkit-scrollbar {
         display: none;
-        /* width: 0; */
+        width: 0;
       }
     }
   }
 
   h1, h2 {
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
-    font-size: 2.8rem;
+    font-size: 2.5rem;
   }
 
   h2 {
@@ -74,6 +74,10 @@ export default createGlobalStyle`
         border-radius: 10px;
         border: 2px solid #888;
       }
+    }
+
+    h1, h2 {
+      font-size: 2.8rem;
     }
 
     button:hover {
