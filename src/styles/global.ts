@@ -20,9 +20,6 @@ export default createGlobalStyle`
     overflow: hidden;
 
     > div {
-      width: 100%;
-      height: 100vh;
-      max-height: 100vh;
       height: -webkit-fill-available;
       overflow-y: auto;
       scroll-behavior: smooth;
@@ -34,7 +31,7 @@ export default createGlobalStyle`
     }
   }
 
-  body.colorPurple {
+  .colorPurple {
     background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
   }
 

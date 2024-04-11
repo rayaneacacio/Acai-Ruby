@@ -57,7 +57,6 @@ export function MontarPedido(): ReactElement {
         break;
 
       case "extras":
-        document.querySelector("body")?.classList.add("colorPurple");
         navigate("/services");
         break;
     }

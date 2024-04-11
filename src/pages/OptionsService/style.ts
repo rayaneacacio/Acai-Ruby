@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
   text-align: center;
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
 
   main > h1 {
     padding: 5rem 2rem;
@@ -38,7 +41,7 @@ export const Container = styled.div`
     }
 
     main > div:last-of-type {
-      padding: 5rem 0 0;
+      padding: 5rem 0 1rem;
     }
   }
 `;
