@@ -12,11 +12,17 @@ export default createGlobalStyle`
     font-size: 62.5%;
   }
 
+  html {
+    height: -webkit-fill-available;
+  }
+
   body {
     background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
     color: ${({ theme }) => theme.COLORS.WHITE};
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     font-size: 1.8rem;
+    height: 100vh;
+    height: -webkit-fill-available;
     overflow: hidden;
 
     > div {
