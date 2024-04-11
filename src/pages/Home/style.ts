@@ -5,8 +5,6 @@ import imgLogo from "../../assets/logo.png";
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.WHITE};
-  width: 100%;
-  height: 100vh;
   animation: animateOpacity 1s forwards ease;
 
   header {

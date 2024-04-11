@@ -11,21 +11,19 @@ export default createGlobalStyle`
   :root {
     font-size: 62.5%;
   }
-
-  html {
-    height: -webkit-fill-available;
-  }
-
+  
   body {
     background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
     color: ${({ theme }) => theme.COLORS.WHITE};
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     font-size: 1.8rem;
-    height: 100vh;
-    height: -webkit-fill-available;
     overflow: hidden;
 
     > div {
+      width: 100%;
+      height: 100vh;
+      max-height: 100vh;
+      height: -webkit-fill-available;
       overflow-y: auto;
       scroll-behavior: smooth;
 
