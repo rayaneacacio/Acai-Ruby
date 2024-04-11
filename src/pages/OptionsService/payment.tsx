@@ -16,19 +16,23 @@ export function PaymentOptions(): ReactElement {
 
   function handleNavigateMenu(formaDePagamento: string): void {
     insertPedido({ pagamento: formaDePagamento });
-    navigate("/menu");
+    navigate("#");
   }
 
   return (
     <Container>
-      <h1>ESCOLHA UMA DAS OPÇÕES ABAIXO ;)</h1>
+      <main>
+        <h1>ESCOLHA UMA DAS OPÇÕES ABAIXO ;)</h1>
 
-      <div>
-        <Button icon={ SvgCard() } text="CARTÃO" onClick={() => handleNavigateMenu("cartão") } />
-        <Button icon={ SvgMoney() } text="DINHEIRO" onClick={() => handleNavigateMenu("dinheiro") } />
-      </div>
+        <div>
+          <Button icon={ SvgCard() } text="CARTÃO" onClick={() => handleNavigateMenu("cartão") } />
+          <Button icon={ SvgMoney() } text="DINHEIRO" onClick={() => handleNavigateMenu("dinheiro") } />
+        </div>
 
-      <ButtonBack />
+        <div>
+          <ButtonBack />
+        </div>
+      </main>
     </Container>
   )
 }
