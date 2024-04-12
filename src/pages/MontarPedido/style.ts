@@ -8,7 +8,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 5rem;
-  animation: animateOpacity 1s forwards ease;
 
   .titles {
     padding: 3rem 2rem;

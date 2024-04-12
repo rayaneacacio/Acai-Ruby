@@ -118,15 +118,6 @@ export default createGlobalStyle`
     }
   }
 
-  @keyframes animateOpacity {
-    from {
-      opacity: 0.5;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
   @keyframes animateBackgroundOpacity {
     0% {
       background-color: rgba(8, 8, 8, 0.64);

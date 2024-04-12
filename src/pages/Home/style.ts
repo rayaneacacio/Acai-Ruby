@@ -5,7 +5,6 @@ import imgLogo from "../../assets/logo.png";
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.WHITE};
-  animation: animateOpacity 1s forwards ease;
 
   header {
     background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
