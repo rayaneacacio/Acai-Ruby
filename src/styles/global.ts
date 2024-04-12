@@ -21,7 +21,9 @@ export default createGlobalStyle`
   }
 
   #root > div {
+    width: 100%;
     height: -webkit-fill-available;
+    max-height: 100vh;
     overflow-y: auto;
     scroll-behavior: smooth;
 
@@ -64,6 +66,8 @@ export default createGlobalStyle`
 
   @media(min-width: 1000px) {
     #root > div {
+      height: 100vh;
+      
       &::-webkit-scrollbar {
         display: block;
         background: #888; 

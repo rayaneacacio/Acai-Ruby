@@ -2,9 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   text-align: center;
-  width: 100%;
-  height: 100vh;
-  max-height: 100vh;
 
   main {
     background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};

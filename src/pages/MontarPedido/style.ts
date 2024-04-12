@@ -3,9 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
   text-transform: uppercase;
-  width: 100%;
-  height: 100vh;
-  max-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
