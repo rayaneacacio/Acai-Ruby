@@ -186,6 +186,7 @@ export const Display = styled.div`
 
   @media(min-width: 1200px) {
     .pedido {
+      width: 20rem;
       display: block;
       background: ${({ theme }) => theme.COLORS.BACKGROUND_GRADIENT};
       font-size: 1rem;
@@ -218,10 +219,11 @@ export const Display = styled.div`
 `;
 
 export const ViewRecibo = styled.div`
+  width: 30rem;
+  height: 10rem;
   color: ${({ theme }) => theme.COLORS.PURPLE};
   font-size: 1.3rem;
   font-weight: 500;
-  height: 10rem;
   border: 3px solid ${({ theme }) => theme.COLORS.PURPLE};
   border-radius: 2rem;
   display: flex;
@@ -231,8 +233,8 @@ export const ViewRecibo = styled.div`
   button {
     background: ${({ theme }) => theme.COLORS.PURPLE};
     font-size: 1.5rem;
-    height: 25%;
-    padding: 1rem;
+    height: 3rem;
+    padding: 1rem 1.5rem;
     border-radius: 2rem;
     margin: 1rem;
     align-self: center;
@@ -260,11 +262,17 @@ export const ViewRecibo = styled.div`
     }
   }
 
-  @media(min-width: 1100px) {
-    height: 100%;
+  @media(min-width: 380px) {
+    width: 100%;
+  }
 
+  @media(min-width: 700px) {
+    width: 70rem;
+    height: 100%;
+  }
+
+  @media(min-width: 1100px) {
     button {
-      padding: 1rem 1.5rem;
       margin: 2rem;
     }
 
