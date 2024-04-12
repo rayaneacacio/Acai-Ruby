@@ -30,6 +30,12 @@ export function Home(): ReactElement {
 
   function handlePedido(product: IProduct): void {
     const dialog: HTMLDialogElement = document.querySelector(".dialogPedido")!;
+
+    if(window.innerWidth <= 1000) {
+      dialog.style.display = "none";
+      dialog.querySelector("div")!.style.animation = "none";
+    }
+
     dialog.style.display = "block";
 
     setImgPedido(product.image);

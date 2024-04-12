@@ -35,6 +35,7 @@ export const Container = styled.dialog`
   @media(min-width: 1000px) {
     > div {
       height: 25rem;
+      padding: 3rem 0;
       border-radius: 4rem 4rem 0 0;
       position: fixed;
       bottom: 0;
@@ -48,13 +49,21 @@ export const Container = styled.dialog`
 `;
 
 export const Cups = styled.div`
-  margin: 2rem 0 5rem;
+  width: 100%;
+  min-height: calc(100% - 26rem);
+  padding: 2rem 0;
   display: flex;
   justify-content: center;
+  align-content: flex-start;
   flex-wrap: wrap;
   gap: 5rem;
 
   @media(min-width: 1000px) {
+    width: 70rem;
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    margin: 2rem 0 5rem;
     grid-area: divCups;
     gap: 9rem;
   }

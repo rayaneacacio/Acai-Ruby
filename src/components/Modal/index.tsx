@@ -22,6 +22,7 @@ export function Modal(props: { image: string }) {
 
     if(window.innerWidth <= 1000) {
       dialog.style.display = "none";
+      dialogDiv.style.animation = "none";
       return;  
     }
 
