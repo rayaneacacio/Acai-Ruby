@@ -152,6 +152,7 @@ export const Ingredients = styled.div`
 export const Display = styled.div`
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   width: 100%;
+  height: 27rem;
   padding: 2rem;
   display: grid;
   grid-template-areas: "buttons buttons" "recibo recibo";
@@ -177,6 +178,7 @@ export const Display = styled.div`
   }
 
   @media(min-width: 700px) {
+    height: 18rem;
     padding: 3rem;
     display: flex;
     align-items: center;

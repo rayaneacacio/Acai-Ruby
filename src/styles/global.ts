@@ -18,16 +18,16 @@ export default createGlobalStyle`
     font-family: ${({ theme }) => theme.FONTS.MONTSERRAT};
     font-size: 1.8rem;
     overflow: hidden;
+  }
 
-    > div {
-      height: -webkit-fill-available;
-      overflow-y: auto;
-      scroll-behavior: smooth;
+  #root > div {
+    height: -webkit-fill-available;
+    overflow-y: auto;
+    scroll-behavior: smooth;
 
-      &::-webkit-scrollbar {
-        display: none;
-        width: 0;
-      }
+    &::-webkit-scrollbar {
+      display: none;
+      width: 0;
     }
   }
 
@@ -63,7 +63,7 @@ export default createGlobalStyle`
   }
 
   @media(min-width: 1000px) {
-    body > div {
+    #root > div {
       &::-webkit-scrollbar {
         display: block;
         background: #888; 
