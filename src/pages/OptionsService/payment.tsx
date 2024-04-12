@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import { SvgCard } from "../../assets/svgs/card";
 import { SvgMoney } from "../../assets/svgs/money";
@@ -12,11 +12,11 @@ import { usePedido } from "../../hook/pedido";
 
 export function PaymentOptions(): ReactElement {
   const { insertPedido } = usePedido();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   function handleNavigateMenu(formaDePagamento: string): void {
     insertPedido({ pagamento: formaDePagamento });
-    navigate("#");
+    // navigate("");
   }
 
   return (

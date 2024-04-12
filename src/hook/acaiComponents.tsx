@@ -39,16 +39,13 @@ function AcaiComponentsProvider(props: { children: ReactElement }) {
 
   async function findAcaiComponents(signal: AbortSignal): Promise<void> {
     try {
-      const responseCremes = await api.get(`/acai_components/index?type=cremes`, { signal });
-      const responseComplementos = await api.get(`/acai_components/index?type=complementos`, { signal });
-      const responseCoberturas = await api.get(`/acai_components/index?type=coberturas`, { signal });
-      const responseExtras = await api.get(`/acai_components/index?type=extras`, { signal });
+      const response = await api.get(`/acai_components/index`, { signal });
       
       setAllComponents({
-        cremes: responseCremes.data,
-        complementos: responseComplementos.data,
-        coberturas: responseCoberturas.data,
-        extras: responseExtras.data
+        cremes: response.data.cremes,
+        complementos: response.data.complementos,
+        coberturas: response.data.coberturas,
+        extras: response.data.extras
       });
 
     } catch(error) {
